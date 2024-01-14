@@ -7,10 +7,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        main: 'var(--width-main)',
+      },
+      maxWidth: {
+        main: 'var(--max-width-main)',
+      },
       backgroundColor: {
         primary: 'var(--bg-primary)',
         secondary: 'var(--bg-secondary)',
         tertiary: 'var(--bg-tertiary)',
+        'c-primary': 'var(--color-primary)',
+        'c-secondary': 'var(--color-secondary)',
       },
       textColor: {
         primary: 'var(--text-primary)',

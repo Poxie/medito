@@ -9,8 +9,11 @@
   --border-primary: #F5F5F5;
   --border-secondary: #E5E5E5;
   --color-primary: #72CA97;
+  --color-secondary: #62B183;
   --text-primary: #000;
   --text-secondary: #606060;
+  --width-main: 1200px;
+  --max-width-main: 90%;
 }
 
 @layer components {
