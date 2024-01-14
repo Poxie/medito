@@ -7,7 +7,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      
+      backgroundColor: {
+        primary: 'var(--bg-primary)',
+        secondary: 'var(--bg-secondary)',
+        tertiary: 'var(--bg-tertiary)',
+      },
+      textColor: {
+        primary: 'var(--text-primary)',
+        secondary: 'var(--text-secondary)',
+      },
+      color: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+      },
     },
   },
   plugins: [],

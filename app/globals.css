@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --bg-primary: #fff;
+  --bg-secondary: #F5F5F5;
+  --bg-tertiary: #E5E5E5;
+  --color-primary: #72CA97;
+  --text-primary: #000;
+  --text-secondary: #606060;
+}
+
+@layer components {
+  body {
+    @apply bg-primary;
+  }
+}
