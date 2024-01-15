@@ -11,7 +11,7 @@ export default function Button({ children, onClick, className, buttonType='prima
             className={twMerge(
                 "py-4 px-5 rounded-lg font-bold transition-colors",
                 buttonType === "primary" && "bg-c-primary hover:bg-c-secondary text-white",
-                buttonType === 'secondary' && "bg-secondary text-primary",
+                buttonType === 'secondary' && "bg-secondary text-primary hover:bg-tertiary",
                 buttonType === 'transparent' && 'text-secondary hover:bg-secondary',
                 className,
             )}
