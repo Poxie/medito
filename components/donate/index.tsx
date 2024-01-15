@@ -7,7 +7,7 @@ export default function Donate() {
             <DonationProgress className="p-5 border-b-[1px] border-b-secondary" />
             <div className="p-5">
                 <span className="block mb-1">
-                    Make a change today.
+                    Make a change, today.
                 </span>
                 <DonateForm />
             </div>
