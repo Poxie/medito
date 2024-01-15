@@ -19,6 +19,7 @@ const DonationContext = React.createContext<null | {
     step: number;
     setStep: (step: number) => void;
     updateInfo: (key: DonationInfoKey, value: string) => void;
+    info: ReturnType<typeof createInitialInfo>;
 }>(null);
 
 export const useDonation = () => {
@@ -41,7 +42,7 @@ export default function DonateForm() {
         }))
     }
 
-    const value = { step, setStep, updateInfo };
+    const value = { step, setStep, updateInfo, info };
     return(
         <DonationContext.Provider value={value}>
             {step === DONATE_FORM_STEPS.AMOUNT && (

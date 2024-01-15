@@ -4,12 +4,7 @@ import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 
 export default function DonationDetails() {
-    const { setStep, updateInfo } = useDonation();
-
-    const [info, setInfo] = useState({
-        displayName: '',
-        email: '',
-    });
+    const { setStep, updateInfo, info } = useDonation();
     const [message, setMessage] = useState('');
 
     const goBack = () => setStep(DONATE_FORM_STEPS.AMOUNT);
@@ -23,10 +18,7 @@ export default function DonationDetails() {
         };
     }
     const onPropertyChange = (key: keyof typeof info, value: string) => {
-        setInfo(prev => ({
-            ...prev,
-            [key]: value,
-        }))
+        updateInfo(key, value);
         setMessage('');
     }
 
@@ -35,8 +27,6 @@ export default function DonationDetails() {
             <Input 
                 className="mb-2"
                 placeholder="Display name"
-   
-   
                 onChange={text => onPropertyChange('displayName', text)}
                 value={info.displayName}
             />
