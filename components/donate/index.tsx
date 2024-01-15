@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { use, useState } from "react";
 import Input from "../input";
 import DonationProgress from "./DonationProgress";
 import Chips from "../chips";
@@ -7,6 +7,19 @@ import Button from "../button";
 
 export default function Donate() {
     const [amount, setAmount] = useState('');
+    const [message, setMessage] = useState('');
+
+    const onAmountChange = (value: string) => {
+        setAmount(value);
+        setMessage('');
+    }
+    const onNext = () => {
+        const isInteger = /^\d+$/.test(amount);
+        if(!isInteger) {
+            setMessage('Please enter a valid amount.');
+            return;
+        }
+    }
 
     return(
         <div className="min-w-donate w-donate rounded-lg border-[1px] border-secondary">
@@ -17,7 +30,7 @@ export default function Donate() {
                 </span>
                 <Input 
                     placeholder="Amount"
-                    onChange={setAmount}
+                    onChange={onAmountChange}
                     value={amount}
                 />
                 <Chips 
@@ -27,10 +40,15 @@ export default function Donate() {
                         { id: '10', text: '$10' },
                         { id: '20', text: '$20' },
                     ]}
-                    onChipClick={setAmount}
+                    onChipClick={onAmountChange}
                 />
+                {message && (
+                    <span className="block mt-2 -mb-2 text-red-500 text-sm">
+                        {message}
+                    </span>
+                )}
                 <Button
-                    onClick={console.log}
+                    onClick={onNext}
                     className="mt-4 w-full"
                 >
                     Next
