@@ -3,6 +3,7 @@ import { useState } from "react";
 import Input from "../input";
 import DonationProgress from "./DonationProgress";
 import Chips from "../chips";
+import Button from "../button";
 
 export default function Donate() {
     const [amount, setAmount] = useState('');
@@ -28,6 +29,12 @@ export default function Donate() {
                     ]}
                     onChipClick={setAmount}
                 />
+                <Button
+                    onClick={console.log}
+                    className="mt-3 w-full"
+                >
+                    Next
+                </Button>
             </div>
         </div>
     )
