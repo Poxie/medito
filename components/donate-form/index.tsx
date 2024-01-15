@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import DonationAmount from "./DonationAmount";
+import DonationDetails from "./DonationDetails";
 
 export const DONATE_FORM_STEPS = {
     AMOUNT: 0,
@@ -45,6 +46,9 @@ export default function DonateForm() {
         <DonationContext.Provider value={value}>
             {step === DONATE_FORM_STEPS.AMOUNT && (
                 <DonationAmount />
+            )}
+            {step === DONATE_FORM_STEPS.DETAILS && (
+                <DonationDetails />
             )}
         </DonationContext.Provider>
     )
