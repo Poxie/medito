@@ -1,54 +1,40 @@
 "use client";
-import { useState } from "react";
-import Button from "../button";
-import Chips from "../chips";
-import Input from "../input";
+import React, { useState } from "react";
+import DonationAmount from "./DonationAmount";
+
+export const DONATE_FORM_STEPS = {
+    AMOUNT: 0,
+    DETAILS: 1,
+}
+
+const DonationContext = React.createContext<null | {
+    step: number;
+    setStep: (step: number) => void;
+}>(null);
+
+export const useDonation = () => {
+    const context = React.useContext(DonationContext);
+    if (!context) {
+        throw new Error(`useDonation must be used within a DonationProvider`);
+    }
+    return context;
+}
 
 export default function DonateForm() {
-    const [amount, setAmount] = useState('');
-    const [message, setMessage] = useState('');
+    const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
 
-    const onAmountChange = (value: string) => {
-        setAmount(value);
-        setMessage('');
-    }
-    const onNext = (e: React.FormEvent) => {
-        e.preventDefault();
+    const [info, setInfo] = useState({
+        amount: '',
+        displayName: '',
+        email: '',
+    })
 
-        const isInteger = /^\d+$/.test(amount);
-        if(!isInteger) {
-            setMessage('Please enter a valid amount.');
-            return;
-        }
-    }
-
+    const value = { step, setStep };
     return(
-        <form onSubmit={onNext}>
-            <Input 
-                placeholder="Amount"
-                onChange={onAmountChange}
-                value={amount}
-            />
-            <Chips 
-                className="mt-2"
-                chips={[
-                    { id: '5', text: '$5' },
-                    { id: '10', text: '$10' },
-                    { id: '20', text: '$20' },
-                ]}
-                onChipClick={onAmountChange}
-            />
-            {message && (
-                <span className="block mt-2 -mb-2 text-red-500 text-sm">
-                    {message}
-                </span>
+        <DonationContext.Provider value={value}>
+            {step === DONATE_FORM_STEPS.AMOUNT && (
+                <DonationAmount />
             )}
-            <Button
-                onClick={() => {}}
-                className="mt-4 w-full"
-            >
-                Next
-            </Button>
-        </form>
+        </DonationContext.Provider>
     )
 }
