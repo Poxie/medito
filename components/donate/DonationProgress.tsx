@@ -1,4 +1,5 @@
 import DonationProgressBar from "./DonationProgressBar";
+import DonationCountUp from "./DonationCountUp";
 
 const CURRENT_DONATIONS = 12424.9;
 const GOAL_DONATIONS = 20000;
@@ -10,9 +11,10 @@ export default function DonationProgress({ className }: {
 
     return(
         <div className={className}>
-            <span className="text-2xl text-[28px] font-bold">
-                {CURRENT_DONATIONS.toLocaleString('default', { currency: 'USD', style: 'currency' })}
-            </span>
+            <DonationCountUp 
+                count={CURRENT_DONATIONS}
+                className="text-2xl text-[28px] font-bold"
+            />
             {' '}
             <span className="text-secondary">
                 / {GOAL_DONATIONS.toLocaleString('default', { currency: 'USD', style: 'currency' })} this far.
