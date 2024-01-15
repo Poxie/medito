@@ -14,6 +14,7 @@ export default function Chips({ chips, onChipClick, className, chipClassName }: 
             {chips.map(chip => (
                 <li className="flex-1" key={chip.id}>
                     <button 
+                        type="button"
                         onClick={() => onChipClick(chip.id)}
                         className={twMerge(
                             "w-full px-4 py-3 text-sm bg-secondary border-[1px] border-secondary rounded-md transition-colors hover:bg-tertiary",
