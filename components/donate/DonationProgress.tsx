@@ -22,9 +22,6 @@ export default function DonationProgress({ className }: {
             
             <div className="mt-2">
                 <DonationProgressBar percent={percent} />
-                <span className="block mt-2 text-right text-secondary text-sm">
-                    We are {Math.floor(percent)}% of the way to our goal!
-                </span>
             </div>
         </div>
     )
