@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Input from "../input";
 import DonationProgress from "./DonationProgress";
+import Chips from "../chips";
 
 export default function Donate() {
     const [amount, setAmount] = useState('');
@@ -17,6 +18,15 @@ export default function Donate() {
                     placeholder="Amount"
                     onChange={setAmount}
                     value={amount}
+                />
+                <Chips 
+                    className="mt-2"
+                    chips={[
+                        { id: '5', text: '$5' },
+                        { id: '10', text: '$10' },
+                        { id: '20', text: '$20' },
+                    ]}
+                    onChipClick={setAmount}
                 />
             </div>
         </div>
