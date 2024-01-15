@@ -9,9 +9,13 @@ const config: Config = {
     extend: {
       width: {
         main: 'var(--width-main)',
+        donate: 'var(--donate-section-width)',
       },
       maxWidth: {
         main: 'var(--max-width-main)',
+      },
+      minWidth: {
+        donate: 'var(--donate-section-width)',
       },
       backgroundColor: {
         primary: 'var(--bg-primary)',
