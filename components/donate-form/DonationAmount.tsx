@@ -29,11 +29,19 @@ export default function DonationAmount() {
 
     return(
         <form onSubmit={onNext}>
-            <Input 
-                placeholder="Amount"
-                onChange={onAmountChange}
-                value={amount}
-            />
+            <div className="flex">
+                <div className="px-5 flex items-center bg-secondary border-[1px] border-secondary rounded-l-lg text-secondary">
+                    <span>
+                        $
+                    </span>
+                </div>
+                <Input 
+                    className="rounded-l-none border-l-0"
+                    placeholder="Amount"
+                    onChange={onAmountChange}
+                    value={amount}
+                />
+            </div>
             <Chips 
                 className="mt-2"
                 chips={[
