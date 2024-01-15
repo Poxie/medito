@@ -12,7 +12,7 @@ export default function Donate() {
         <div className="min-w-donate w-donate rounded-lg border-[1px] border-secondary">
             <DonationProgress className="p-5 border-b-[1px] border-b-secondary" />
             <div className="p-5">
-                <span className="block mb-2">
+                <span className="block mb-1">
                     Make a change today.
                 </span>
                 <Input 
@@ -31,7 +31,7 @@ export default function Donate() {
                 />
                 <Button
                     onClick={console.log}
-                    className="mt-3 w-full"
+                    className="mt-4 w-full"
                 >
                     Next
                 </Button>
