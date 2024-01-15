@@ -5,7 +5,7 @@ import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 
 export default function DonationAmount() {
-    const { setStep } = useDonation();
+    const { setStep, updateInfo } = useDonation();
 
     const [amount, setAmount] = useState('');
     const [message, setMessage] = useState('');
@@ -23,6 +23,7 @@ export default function DonationAmount() {
             return;
         }
 
+        updateInfo('amount', amount);
         setStep(DONATE_FORM_STEPS.DETAILS);
     }
 
