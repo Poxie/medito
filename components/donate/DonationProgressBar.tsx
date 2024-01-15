@@ -25,7 +25,7 @@ export default function DonationProgressBar({ percent }: {
     const commonClassName = "absolute top-0 left-0 h-full rounded-full";
     return(
         <div>
-            <div className="relative h-2">
+            <div className="relative h-2 rounded-full overflow-hidden">
                 <div className={twMerge(
                     commonClassName,
                     "w-full bg-tertiary",
