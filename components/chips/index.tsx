@@ -16,7 +16,7 @@ export default function Chips({ chips, onChipClick, className, chipClassName }: 
                     <button 
                         onClick={() => onChipClick(chip.id)}
                         className={twMerge(
-                            "w-full px-4 py-2 text-sm bg-secondary border-[1px] border-secondary rounded-md transition-colors hover:bg-tertiary",
+                            "w-full px-4 py-3 text-sm bg-secondary border-[1px] border-secondary rounded-md transition-colors hover:bg-tertiary",
                             chipClassName,
                         )}
                     >
