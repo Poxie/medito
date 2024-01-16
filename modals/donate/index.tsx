@@ -1,11 +1,12 @@
 import DonateForm from "@/components/donate-form";
+import ModalHeader from "../ModalHeader";
 
 export default function DonateModal() {
     return(
         <div>
-            <h1 className="text-xl font-medium p-4 border-b-[1px] border-b-secondary">
+            <ModalHeader>
                 Make a change
-            </h1>
+            </ModalHeader>
             <div className="p-4">
                 <DonateForm />
             </div>
