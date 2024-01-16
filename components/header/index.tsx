@@ -1,5 +1,4 @@
-"use client";
-import Button from "../button";
+import HeaderButtons from "./HeaderButtons";
 
 export default function Header() {
     return(
@@ -18,19 +17,7 @@ export default function Header() {
                     Make a donation today and be a part of the movement that transforms lives through education. Together, we can build a better tomorrow!
                 </p>
             </div>
-            <div className="mt-6 flex gap-3">
-                <Button
-                    onClick={console.log}
-                >
-                    Donate Now
-                </Button>
-                <Button
-                    onClick={console.log}
-                    buttonType="secondary"
-                >
-                    What do I get?
-                </Button>
-            </div>
+            <HeaderButtons />
         </>
     )
 }
