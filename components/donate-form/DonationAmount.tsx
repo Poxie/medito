@@ -18,7 +18,7 @@ export default function DonationAmount() {
         e.preventDefault();
 
         const isInteger = /^\d+$/.test(amount);
-        if(!isInteger) {
+        if(!isInteger || Number(amount) <= 0) {
             setMessage('Please enter a valid amount.');
             return;
         }
