@@ -14,12 +14,14 @@ export default function HeaderButtons() {
         <div className="mt-6 flex gap-3">
             <Button
                 onClick={openDonateModal}
+                className="flex-1 lg:flex-[unset]"
             >
                 Donate Now
             </Button>
             <Button
                 onClick={openRewardsModal}
                 buttonType="secondary"
+                className="flex-1 lg:flex-[unset]"
             >
                 What do I get?
             </Button>
