@@ -1,4 +1,5 @@
 import Donate from '@/components/donate'
+import FrequentlyAskedQuestions from '@/components/faq'
 import Header from '@/components/header'
 import Rewards from '@/components/rewards'
 import SectionHeader from '@/components/section-header'
@@ -15,6 +16,10 @@ export default function Home() {
               Donation rewards
             </SectionHeader>
             <Rewards />
+            <SectionHeader className="mt-12 mb-3">
+              Frequently Asked Questions
+            </SectionHeader>
+            <FrequentlyAskedQuestions />
           </div>
         </div>
       </div>
