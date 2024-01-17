@@ -13,7 +13,7 @@ export default function FaqItem({ question, answer }: {
         <li className="border-[1px] border-secondary rounded-lg">
             <button 
                 className={twMerge(
-                    "p-4 w-full flex items-center justify-between font-medium hover:bg-secondary transition-colors",
+                    "p-4 w-full flex items-center justify-between font-medium hover:bg-secondary transition-colors text-left",
                     expanded && 'bg-secondary',
                 )}
                 onClick={() => setExpanded(!expanded)}
