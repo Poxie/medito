@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="lg:pt-16 lg:w-main lg:max-w-main mx-auto flex items-start gap-12">
       <div>
-        <MobileDonate className="mb-8 lg:hidden" />
+        <MobileDonate className="mb-6 lg:hidden" />
         <Header className="mx-auto max-w-main lg:max-w-[unset]" />
         <div className="py-16 mx-auto max-w-main lg:max-w-[unset]">
           <SectionHeader className="mb-3">
