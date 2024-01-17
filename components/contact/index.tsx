@@ -60,7 +60,7 @@ export default function Contact() {
             className="grid"
             onSubmit={onSubmit}
         >
-            <div className="mb-2 w-full flex gap-2">
+            <div className="mb-2 w-full flex gap-2 flex-col sm:flex-row">
                 <Input 
                     onChange={text => updateInfo('name', text)}
                     value={info.name}
