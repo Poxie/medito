@@ -2,11 +2,13 @@
 import { useModal } from "@/contexts/modal";
 import Button from "../button";
 import DonateModal from "@/modals/donate";
+import RewardsModal from "@/modals/rewards";
 
 export default function HeaderButtons() {
     const { setModal } = useModal();
 
     const openDonateModal = () => setModal(<DonateModal />);
+    const openRewardsModal = () => setModal(<RewardsModal />);
 
     return(
         <div className="mt-6 flex gap-3">
@@ -16,7 +18,7 @@ export default function HeaderButtons() {
                 Donate Now
             </Button>
             <Button
-                onClick={console.log}
+                onClick={openRewardsModal}
                 buttonType="secondary"
             >
                 What do I get?
