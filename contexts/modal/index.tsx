@@ -20,9 +20,16 @@ export default function ModalProvider({ children }: {
 }) {
     const [modal, setModal] = useState<React.ReactNode>(null);
 
-    const close = () => setModal(null);
+    const _setModal = (modal: React.ReactNode) => {
+        setModal(modal);
+        document.body.style.overflow = 'hidden';
+    }
+    const close = () => {
+        setModal(null);
+        document.body.style.overflow = '';
+    }
 
-    const value = { setModal, close };
+    const value = { close, setModal: _setModal };
     return(
         <ModalContext.Provider value={value}>
             {children}
