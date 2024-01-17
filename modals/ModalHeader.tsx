@@ -7,7 +7,7 @@ export default function ModalHeader({ children }: {
     const { close } = useModal();
 
     return(
-        <div className="p-4 flex items-center justify-between border-b-[1px] border-b-secondary">
+        <div className="p-4 sticky top-0 z-[2] flex items-center justify-between border-b-[1px] border-b-secondary bg-primary">
             <span className="text-xl font-medium">
                 {children}
             </span>

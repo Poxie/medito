@@ -42,7 +42,7 @@ export default function ModalProvider({ children }: {
                             initial={{ opacity: 0, translateY: 50, scale: 0.9 }}
                             animate={{ opacity: 1, translateY: 0, scale: 1 }}
                             transition={{ bounce: false, duration: 0.2 }}
-                            className="[--width:500px] min-w-[--width] w-[--width] relative z-10 bg-white rounded-lg pointer-events-auto"
+                            className="[--width:500px] w-[--width] max-w-full max-h-[100dvh] overflow-auto relative z-10 bg-white rounded-lg pointer-events-auto"
                         >
                             {modal}
                         </motion.div>
