@@ -26,6 +26,7 @@ const config: Config = {
         tertiary: 'var(--bg-tertiary)',
         'c-primary': 'var(--color-primary)',
         'c-secondary': 'var(--color-secondary)',
+        'c-accent': 'var(--color-accent)',
       },
       textColor: {
         primary: 'var(--text-primary)',

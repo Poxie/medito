@@ -1,8 +1,10 @@
 import HeaderButtons from "./HeaderButtons";
 
-export default function Header() {
+export default function Header({ className }: {
+    className?: string;
+}) {
     return(
-        <>
+        <div className={className}>
             <h1 className="text-4xl font-bold">
                 Hope for Tomorrow: Empowering Communities Through Education
             </h1>
@@ -18,6 +20,6 @@ export default function Header() {
                 </p>
             </div>
             <HeaderButtons />
-        </>
+        </div>
     )
 }
