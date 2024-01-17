@@ -3,6 +3,7 @@ import { DM_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/navbar'
 import ModalProvider from '@/contexts/modal'
+import Footer from '@/components/footer'
 
 const DMSans = DM_Sans({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <ModalProvider>
           <Navbar />
           {children}
+          <Footer />
         </ModalProvider>
       </body>
     </html>
