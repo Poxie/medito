@@ -3,6 +3,7 @@ import { useModal } from "@/contexts/modal";
 import Button from "../button";
 import DonateModal from "@/modals/donate";
 import RewardsModal from "@/modals/rewards";
+import DonateModalButton from "../donate/DonateModalButton";
 
 export default function HeaderButtons() {
     const { setModal } = useModal();
@@ -12,12 +13,9 @@ export default function HeaderButtons() {
 
     return(
         <div className="mt-6 flex gap-3">
-            <Button
-                onClick={openDonateModal}
+            <DonateModalButton 
                 className="flex-1 lg:flex-[unset]"
-            >
-                Donate Now
-            </Button>
+            />
             <Button
                 onClick={openRewardsModal}
                 buttonType="secondary"
