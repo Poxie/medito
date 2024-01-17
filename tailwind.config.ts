@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import containerQueries from '@tailwindcss/container-queries';
 
 const config: Config = {
   content: [
@@ -37,9 +38,9 @@ const config: Config = {
       borderColor: {
         primary: 'var(--border-primary)',
         secondary: 'var(--border-secondary)',
-      }
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/container-queries')],
 }
 export default config

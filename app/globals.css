@@ -14,7 +14,7 @@
   --text-secondary: #606060;
   --width-main: 1200px;
   --max-width-main: 90%;
-  --donate-section-width: 400px;
+  --donate-section-width: 375px;
 }
 
 @layer components {
