@@ -1,3 +1,4 @@
+import Contact from '@/components/contact'
 import Donate from '@/components/donate'
 import FrequentlyAskedQuestions from '@/components/faq'
 import Header from '@/components/header'
@@ -20,6 +21,10 @@ export default function Home() {
               Frequently Asked Questions
             </SectionHeader>
             <FrequentlyAskedQuestions />
+            <SectionHeader className="mt-12 mb-3">
+              Still got questions?
+            </SectionHeader>
+            <Contact />
           </div>
         </div>
       </div>
