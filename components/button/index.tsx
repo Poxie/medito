@@ -1,10 +1,11 @@
 import { twMerge } from "tailwind-merge";
 
-export default function Button({ children, onClick, className, buttonType='primary' }: {
+export default function Button({ children, onClick, className, disabled, buttonType='primary' }: {
     onClick: () => void;
     children: React.ReactNode;
     className?: string;
     buttonType?: "primary" | "secondary" | 'transparent';
+    disabled?: boolean;
 }) {
     return(
         <button
@@ -16,6 +17,7 @@ export default function Button({ children, onClick, className, buttonType='prima
                 className,
             )}
             onClick={onClick}
+            disabled={disabled}
         >
             {children}
         </button>
