@@ -17,7 +17,7 @@ export default function Home() {
         />
         <MobileDonate className="mb-6 lg:hidden sticky top-0 bg-primary z-30" />
         <Header className="mx-auto max-w-main lg:max-w-[unset]" />
-        <div className="py-16 mx-auto max-w-main lg:max-w-[unset]">
+        <div className="py-16 mx-auto max-w-main lg:max-w-[unset]" id="rewards">
           <SectionHeader className="mb-3">
             Donation rewards
           </SectionHeader>
