@@ -1,0 +1,15 @@
+{
+    "title": "Medito Foundation",
+    "description": "Medito Foundation is a non-profit organization that aims to make meditation and mindfulness practices available to everyone, everywhere, for free.",
+    "openGraph": {
+        "site_name": "Medito Foundation",
+        "title": "Notion – The all-in-one workspace for your notes, tasks, wikis, and databases.",
+        "description": "Medito Foundation is a non-profit organization that aims to make meditation and mindfulness practices available to everyone, everywhere, for free."
+    },
+    "twitter": {
+        "title": "Notion – The all-in-one workspace for your notes, tasks, wikis, and databases.",
+        "description": "Medito Foundation is a non-profit organization that aims to make meditation and mindfulness practices available to everyone, everywhere, for free.",
+        "card": "summary_large_image",
+        "site": "@notionhq"
+    }
+}
