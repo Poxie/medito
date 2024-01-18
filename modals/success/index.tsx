@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import StatusSpinner from "@/components/status-spinner";
 import { motion } from "framer-motion";
 
-export default function SuccessModal({ sessionId, onSuccess }: {
+export default function SuccessModal({ sessionId }: {
     sessionId: string;
-    onSuccess: (donator: Donator) => void;
 }) {
     const [status, setStatus] = useState<{
         status: 'loading' | 'error' | 'success';
@@ -25,9 +24,8 @@ export default function SuccessModal({ sessionId, onSuccess }: {
             .then(data => {
                 setStatus({
                     status: 'success',
-                    statusText: `Thank you for your $${data.amount} donation, ${data.displayName}!`,
+                    statusText: `Thank you for your $${data.amount} donation, ${data.name}!`,
                 });
-                onSuccess(data);
             })
             .catch(error => {
                 setStatus({
