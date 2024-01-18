@@ -42,3 +42,5 @@ export async function POST(request: Request) {
     
     return Response.json({ url: session.url });
 }
+
+export const runtime = 'edge';

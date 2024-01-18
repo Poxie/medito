@@ -17,3 +17,5 @@ export async function GET(request: Request, { params }: { params: { sessionId: s
         return new Response('Internal server error.', { status: 500 });
     }
 }
+
+export const runtime = 'edge';
