@@ -31,8 +31,9 @@ export const useDonation = () => {
     return context;
 }
 
-export default function DonateForm({ defaultAmount }: {
+export default function DonateForm({ defaultAmount, onStepChange }: {
     defaultAmount?: string;
+    onStepChange?: (step: number) => void;
 }) {
     const { activeTier } = useTiers();
 
@@ -48,6 +49,10 @@ export default function DonateForm({ defaultAmount }: {
         }));
     }, [activeTier]);
 
+    const _setStep = (step: number) => {
+        if(onStepChange) onStepChange(step);
+        setStep(step);
+    }
     const updateInfo = (key: DonationInfoKey, value: string) => {
         setInfo(prev => ({
             ...prev,
@@ -55,7 +60,7 @@ export default function DonateForm({ defaultAmount }: {
         }))
     }
 
-    const value = { step, setStep, updateInfo, info };
+    const value = { setStep: _setStep, step, updateInfo, info };
     return(
         <DonationContext.Provider value={value}>
             {step === DONATE_FORM_STEPS.AMOUNT && (
