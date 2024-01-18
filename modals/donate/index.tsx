@@ -9,7 +9,7 @@ export default function DonateModal({ amount }: {
 }) {
     const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
     return(
-        <div>
+        <>
             <ModalHeader>
                 Make a change
             </ModalHeader>
@@ -25,6 +25,6 @@ export default function DonateModal({ amount }: {
                     onStepChange={setStep}
                 />
             </div>
-        </div>
+        </>
     )
 }
