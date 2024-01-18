@@ -1,4 +1,5 @@
 import Image from "next/image";
+import NavigationTabs from "../navigation-tabs";
 
 const FOOTER_TABS = [
     { text: 'Rewards' },
@@ -15,13 +16,7 @@ export default function Footer() {
                     height={33}
                     alt="Logo"
                 />
-                <ul className="flex gap-4">
-                    {FOOTER_TABS.map(({ text }) => (
-                        <li key={text}>
-                            {text}
-                        </li>
-                    ))}
-                </ul>
+                <NavigationTabs />
             </div>
         </footer>
     )

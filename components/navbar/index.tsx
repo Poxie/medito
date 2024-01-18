@@ -1,4 +1,5 @@
 import Image from "next/image"
+import NavigationTabs from "../navigation-tabs"
 
 export default function Navbar() {
     return(
@@ -9,11 +10,7 @@ export default function Navbar() {
                 width={128}
                 height={77}
             />
-            <ul className="flex gap-4">
-                <li>Rewards</li>
-                <li>FAQ</li>
-                <li>Contact</li>
-            </ul>
+            <NavigationTabs />
         </nav>
     )
 }
