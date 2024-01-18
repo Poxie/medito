@@ -19,7 +19,7 @@ export default function FaqItem({ question, answer }: FAQItem) {
                 {question}
                 <CloseIcon 
                     className={twMerge(
-                        "min-w-5 w-5 rotate-45 transition-transform",
+                        "min-w-5 w-5 rotate-45 transition-transform duration-300",
                         expanded && "rotate-0",
                     )}
                 />
