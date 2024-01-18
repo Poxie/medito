@@ -6,7 +6,7 @@ export async function GET(request: Request, { params }: { params: { sessionId: s
     try {
         const session = await stripe.checkout.sessions.retrieve(params.sessionId);
         return Response.json({
-            displayName: session.customer_details?.name,
+            name: session.customer_details?.name,
             amount: (session.amount_total || 0) / 100,
             timestamp: session.created * 1000,
         });
