@@ -6,6 +6,7 @@ import { DONATE_FORM_STEPS, useDonation } from ".";
 import { useTiers } from "@/contexts/tiers";
 import DonationChips from "./DonationChips";
 
+const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
     const { setActiveTierId } = useTiers();
     const { setStep, updateInfo, info } = useDonation();
@@ -25,6 +26,10 @@ export default function DonationAmount() {
         const isInteger = /^\d+$/.test(amount);
         if(!isInteger || Number(amount) <= 0) {
             setMessage('Please enter a valid amount.');
+            return;
+        }
+        if(Number(amount) > MAX_AMOUNT) {
+            setMessage(`Please enter an amount less than ${MAX_AMOUNT.toLocaleString('default', { currency: 'USD', style: 'currency' })}.`);
             return;
         }
 
