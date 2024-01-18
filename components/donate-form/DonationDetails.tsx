@@ -8,7 +8,7 @@ export default function DonationDetails() {
     const [message, setMessage] = useState('');
 
     const goBack = () => setStep(DONATE_FORM_STEPS.AMOUNT);
-    const onNext = (e: React.FormEvent) => {
+    const onNext = async (e: React.FormEvent) => {
         e.preventDefault();
 
         const invalidProps = Object.entries(info).filter(([key, value]) => !value);
@@ -16,6 +16,17 @@ export default function DonationDetails() {
             setMessage('Please fill in all fields.');
             return;
         };
+
+        const res = await fetch('/payments', {
+            method: 'POST',
+            body: JSON.stringify({ amount: info.amount  }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        const { url } = await res.json();
+        
+        window.location.href = url;
     }
     const onPropertyChange = (key: keyof typeof info, value: string) => {
         updateInfo(key, value);
