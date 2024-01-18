@@ -1,0 +1,122 @@
+.spinner {
+    --brand-success: #5cb85c;
+    --loader-size: 60px;
+    --check-height: calc(var(--loader-size) / 2.5);
+    --check-width: calc(var(--check-height) / 2.5);
+    --check-left: calc(var(--loader-size) / 6 + var(--loader-size) / 8);
+    --check-top: calc(var(--loader-size) / 8);
+    --check-thickness: 2px;
+    --check-color: var(--brand-success);
+    --error-height: 25px;
+    --error-width: 2px;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left-color: var(--check-color);
+    animation: loader-spin 1.2s infinite linear;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 50%;
+    width: var(--loader-size);
+    height: var(--loader-size);
+}
+
+.load-success, .load-error {
+    -webkit-animation: none;
+    animation: none;
+    border-color: var(--check-color);
+    transition: border 500ms ease-out;
+}
+.load-success .checkmark {
+    display: block !important;
+}
+.load-error .error {
+    display: block !important;
+}
+
+.checkmark {
+    display: none;
+}
+.checkmark::after {
+    opacity: 1;
+    height: var(--check-height);
+    width: var(--check-width);
+    transform-origin: left top;
+    border-right: var(--check-thickness) solid var(--check-color);
+    border-top: var(--check-thickness) solid var(--check-color);
+    content: '';
+    left: var(--check-left);
+    top: calc(var(--check-height) + var(--check-top));
+    position: absolute;
+}
+.checkmark.draw::after {
+    animation-duration: 800ms;
+    animation-timing-function: ease;
+    animation-name: checkmark;
+    transform: scaleX(-1) rotate(135deg);
+}
+
+.error {
+    display: none;
+}
+.error::after, .error:before {
+    content: '';
+    opacity: 1;
+    display: block;
+    height: var(--error-height);
+    width: var(--error-width);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: error-line .6s;
+}
+.error::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.error:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+@keyframes error-line {
+    from {
+        height: 0;
+    }
+    to {
+        height: var(--error-height);
+    }
+}
+
+@keyframes loader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes checkmark {
+    0% {
+        height: 0;
+        width: 0;
+        opacity: 1;
+    }
+    20% {
+        height: 0;
+        width: var(--check-width);
+        opacity: 1;
+    }
+    40% {
+        height: var(--check-height);
+        width: var(--check-width);
+        opacity: 1;
+    }
+    100% {
+        height: var(--check-height);
+        width: var(--check-width);
+        opacity: 1;
+    }
+}
