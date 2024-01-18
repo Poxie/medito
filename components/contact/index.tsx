@@ -90,6 +90,7 @@ export default function Contact() {
                 <Button 
                     onClick={() => {}}
                     disabled={loading}
+                    className="p-3 text-sm md:text-base md:py-4 md:px-5"
                 >
                     {!loading ? 'Send Message' : 'Sending...'}
                 </Button>
