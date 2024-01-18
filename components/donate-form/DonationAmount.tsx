@@ -4,6 +4,7 @@ import Chips from "../chips";
 import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 import { useTiers } from "@/contexts/tiers";
+import DonationChips from "./DonationChips";
 
 export default function DonationAmount() {
     const { setActiveTierId } = useTiers();
@@ -46,15 +47,7 @@ export default function DonationAmount() {
                     value={amount}
                 />
             </div>
-            <Chips 
-                className="mt-2"
-                chips={[
-                    { id: '5', text: '$5' },
-                    { id: '10', text: '$10' },
-                    { id: '20', text: '$20' },
-                ]}
-                onChipClick={onAmountChange}
-            />
+            <DonationChips className="mt-2" />
             {message && (
                 <span className="block mt-2 -mb-2 text-red-500 text-sm">
                     {message}

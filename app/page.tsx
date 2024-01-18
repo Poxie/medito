@@ -32,7 +32,7 @@ export default function Home() {
           <Contact />
         </div>
       </div>
-      <div className='hidden lg:block'>
+      <div className='hidden lg:block sticky top-12'>
         <Donate />
         <Donators className="mt-2" />
       </div>
