@@ -5,6 +5,7 @@ import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 import { useTiers } from "@/contexts/tiers";
 import DonationChips from "./DonationChips";
+import { getCurrencyString } from "@/utils";
 
 const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
@@ -29,7 +30,7 @@ export default function DonationAmount() {
             return;
         }
         if(Number(amount) > MAX_AMOUNT) {
-            setMessage(`Please enter an amount less than ${MAX_AMOUNT.toLocaleString('default', { currency: 'USD', style: 'currency' })}.`);
+            setMessage(`Please enter an amount less than ${getCurrencyString(amount)}.`);
             return;
         }
 
