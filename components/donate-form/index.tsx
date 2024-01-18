@@ -8,8 +8,8 @@ export const DONATE_FORM_STEPS = {
     DETAILS: 1,
 }
 
-const createInitialInfo = () => ({
-    amount: '',
+const createInitialInfo = (amount='') => ({
+    amount,
     displayName: '',
     email: '',
 })
@@ -30,10 +30,12 @@ export const useDonation = () => {
     return context;
 }
 
-export default function DonateForm() {
+export default function DonateForm({ defaultAmount }: {
+    defaultAmount?: string;
+}) {
     const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
 
-    const [info, setInfo] = useState(createInitialInfo())
+    const [info, setInfo] = useState(createInitialInfo(defaultAmount))
 
     const updateInfo = (key: DonationInfoKey, value: string) => {
         setInfo(prev => ({
