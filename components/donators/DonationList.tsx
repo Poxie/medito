@@ -22,6 +22,7 @@ const timeAgo = (timestamp: number) => {
     }
 };
 
+const MAX_DONATOR_COUNT = 10;
 export default function DonationList({ initialDonators, className }: {
     initialDonators: DonatorType[];
     className?: string;
@@ -53,7 +54,7 @@ export default function DonationList({ initialDonators, className }: {
             className,
         )}>
             <AnimatePresence>
-                {donators.map(donator => (
+                {donators.slice(0, MAX_DONATOR_COUNT).map(donator => (
                     <motion.li 
                         initial={{ translateY: -50 }}
                         animate={{ translateY: 0 }}
