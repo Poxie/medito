@@ -4,13 +4,32 @@ import { AnimatePresence, motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { Donator } from "@/types";
 import { getRelativeTimeString } from "@/utils";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useModal } from "@/contexts/modal";
+import SuccessModal from "@/modals/success";
 
 const MAX_DONATOR_COUNT = 10;
 export default function DonationList({ initialDonators, className }: {
     initialDonators: Donator[];
     className?: string;
 }) {
+    const router = useRouter();
+    const { setModal } = useModal();
+    const sessionId = useSearchParams().get('session_id');
+
     const [donators, setDonators] = useState(initialDonators);
+
+    // Checking if current user has donated
+    useEffect(() => {
+        if(!sessionId) return;
+
+        setModal(
+            <SuccessModal 
+                sessionId={sessionId}
+            />
+        )
+        router.replace('/');
+    }, [sessionId]);
 
     // Setup webhook to listen for new donations
     useEffect(() => {
