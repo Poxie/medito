@@ -3,6 +3,7 @@ import { useState } from "react";
 import Input from "../input";
 import Button from "../button";
 import { twMerge } from "tailwind-merge";
+import { sendMessage } from "@/utils/requests";
 
 const getInitialInfo = () => ({
     name: '',
@@ -38,11 +39,7 @@ export default function Contact() {
         }
 
         setLoading(true);
-        const response: Response = await new Promise((res, rej) => {
-            setTimeout(() => {
-                res(new Response());
-            }, 1000);
-        });
+        const response = await sendMessage(info);
 
         if(!response.ok) {
             showErrorMessage('Something went wrong. Please try again later.');

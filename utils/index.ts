@@ -32,3 +32,7 @@ export const getRelativeTimeString = (timestamp: number) => {
         return `${days}d ago`;
     }
 }
+
+export const getCurrencyString = (amount: number) => {
+    return amount.toLocaleString('default', { currency: 'USD', style: 'currency' });
+}
