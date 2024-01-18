@@ -10,7 +10,11 @@ import SectionHeader from '@/components/section-header'
 export default function Home() {
   return (
     <main className="lg:pt-16 lg:w-main lg:max-w-main mx-auto flex items-start gap-12">
-      <div>
+      <div className="w-full">
+        <Donators 
+          className='lg:hidden [&>span]:hidden w-full'
+          listClassName='flex whitespace-nowrap w-full overflow-x-auto'
+        />
         <MobileDonate className="mb-6 lg:hidden" />
         <Header className="mx-auto max-w-main lg:max-w-[unset]" />
         <div className="py-16 mx-auto max-w-main lg:max-w-[unset]">
@@ -28,8 +32,8 @@ export default function Home() {
           <Contact />
         </div>
       </div>
-      <div>
-        <Donate className="hidden lg:block" />
+      <div className='hidden lg:block'>
+        <Donate />
         <Donators className="mt-2" />
       </div>
     </main>

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { DonatorType } from ".";
 import { AnimatePresence, motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 
 const timeAgo = (timestamp: number) => {
     const currentTime = Date.now();
@@ -21,8 +22,9 @@ const timeAgo = (timestamp: number) => {
     }
 };
 
-export default function DonationList({ initialDonators }: {
+export default function DonationList({ initialDonators, className }: {
     initialDonators: DonatorType[];
+    className?: string;
 }) {
     const [donators, setDonators] = useState(initialDonators);
 
@@ -46,26 +48,27 @@ export default function DonationList({ initialDonators }: {
     }, []);
 
     return(
-        <ul className="overflow-hidden max-h-[225px]">
+        <ul className={twMerge(
+            "overflow-hidden max-h-[225px]",
+            className,
+        )}>
             <AnimatePresence>
                 {donators.map(donator => (
                     <motion.li 
                         initial={{ translateY: -50 }}
                         animate={{ translateY: 0 }}
-                        className="flex items-center justify-between p-3 border-t-[1px] border-b-secondary"
+                        className="flex items-center justify-between gap-2 p-3 border-t-[1px] border-b-secondary"
                         key={`${donator.name}-${donator.timestamp}`}
                     >
-                        <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium">
-                                {donator.name}
+                        <span className="text-sm font-medium">
+                            {donator.name}
+                            {' '}
+                            <span className="text-secondary">
+                                donated
                                 {' '}
-                                <span className="text-secondary">
-                                    donated
-                                    {' '}
-                                    ${donator.amount}
-                                </span>
+                                ${donator.amount}
                             </span>
-                        </div>
+                        </span>
                         <span className="text-secondary text-sm">
                             {timeAgo(donator.timestamp)}
                         </span>

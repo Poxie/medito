@@ -14,8 +14,9 @@ const getDonators = async () => {
     return donators as DonatorType[];
 }
 
-export default async function Donators({ className }: {
+export default async function Donators({ className, listClassName }: {
     className?: string;
+    listClassName?: string;
 }) {
     const donators = await getDonators();
     return(
@@ -28,6 +29,7 @@ export default async function Donators({ className }: {
             </span>
             <DonationList 
                 initialDonators={donators}
+                className={listClassName}
             />
         </div>
     )
