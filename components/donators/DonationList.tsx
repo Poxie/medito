@@ -3,24 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { Donator } from "@/types";
-
-const timeAgo = (timestamp: number) => {
-    const currentTime = Date.now();
-    const timeDifference = currentTime - timestamp;
-    const minutes = Math.floor(timeDifference / 60000);
-    const hours = Math.floor(timeDifference / 3600000);
-    const days = Math.floor(timeDifference / 86400000);
-
-    if(minutes < 1) {
-        return 'Just now';
-    } else if (minutes < 60) {
-        return `${minutes}m ago`;
-    } else if (hours < 24) {
-        return `${hours}h ago`;
-    } else {
-        return `${days}d ago`;
-    }
-};
+import { getRelativeTimeString } from "@/utils";
 
 const MAX_DONATOR_COUNT = 10;
 export default function DonationList({ initialDonators, className }: {
@@ -71,7 +54,7 @@ export default function DonationList({ initialDonators, className }: {
                             </span>
                         </span>
                         <span className="text-secondary text-sm">
-                            {timeAgo(donator.timestamp)}
+                            {getRelativeTimeString(donator.timestamp)}
                         </span>
                     </motion.li>
                 ))}
