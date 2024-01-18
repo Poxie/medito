@@ -1,9 +1,15 @@
+import { twMerge } from "tailwind-merge";
 import RewardTier from "./RewardGroup";
 import rewards from '@/assets/data/tiers/index.json';
 
-export default function Rewards() {
+export default function Rewards({ className }: {
+    className?: string;
+}) {
     return(
-        <ul className="grid gap-3">
+        <ul className={twMerge(
+            "grid gap-3",
+            className,
+        )}>
             {rewards.map((group, index) => (
                 <RewardTier 
                     {...group}
