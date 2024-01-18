@@ -13,12 +13,16 @@ const config: Config = {
       width: {
         main: 'var(--width-main)',
         donate: 'var(--donate-section-width)',
+        modal: 'var(--modal-width)',
       },
       maxWidth: {
         main: 'var(--max-width-main)',
       },
       minWidth: {
         donate: 'var(--donate-section-width)',
+      },
+      maxHeight: {
+        'donation-list': 'var(--donation-list-height)',
       },
       backgroundColor: {
         primary: 'var(--bg-primary)',

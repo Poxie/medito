@@ -33,7 +33,7 @@ export default function DonationList({ initialDonators, className }: {
 
     return(
         <ul className={twMerge(
-            "overflow-hidden max-h-[225px]",
+            "max-h-donation-list overflow-hidden",
             className,
         )}>
             <AnimatePresence>

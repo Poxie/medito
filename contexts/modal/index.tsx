@@ -59,7 +59,7 @@ export default function ModalProvider({ children }: {
                             initial={{ opacity: 0, translateY: 50, scale: 0.9 }}
                             animate={{ opacity: 1, translateY: 0, scale: 1 }}
                             transition={{ bounce: false, duration: ANIMATION_DURATION }}
-                            className="[--width:500px] w-[--width] max-w-full max-h-[100dvh] overflow-auto relative z-10 bg-white rounded-lg pointer-events-auto"
+                            className="w-modal max-w-full max-h-[100dvh] overflow-auto relative z-10 bg-white rounded-lg pointer-events-auto"
                             key={modal.id}
                         >
                             {modal.modal}

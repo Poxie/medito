@@ -13,10 +13,13 @@
   --color-accent: #72CA9708;
   --text-primary: #000;
   --text-secondary: #606060;
+  --shadow-success: #72CA9770 0px 3px 10px 0px;
+  
   --width-main: 1200px;
   --max-width-main: 90%;
+  --modal-width: 500px;
+  --donation-list-height: 225px;
   --donate-section-width: 375px;
-  --shadow-success: #72CA9770 0px 3px 10px 0px
 }
 
 @layer components {
