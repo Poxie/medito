@@ -8,8 +8,8 @@ import DonationChips from "./DonationChips";
 
 const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
-    const { setActiveTierId } = useTiers();
-    const { setStep, updateInfo, info } = useDonation();
+    const { setActiveTierId, } = useTiers();
+    const { setStep, updateInfo, info, goToStripe } = useDonation();
 
     const [message, setMessage] = useState('');
 
@@ -34,7 +34,8 @@ export default function DonationAmount() {
         }
 
         updateInfo('amount', amount);
-        setStep(DONATE_FORM_STEPS.DETAILS);
+        // setStep(DONATE_FORM_STEPS.DETAILS);
+        goToStripe();
     }
 
     return(

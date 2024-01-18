@@ -4,6 +4,7 @@ import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 import { getCurrencyString } from "@/utils";
 
+// This used to be the second step in the donation form, but we're skipping it for now.
 export default function DonationDetails() {
     const { setStep, updateInfo, info } = useDonation();
     const [message, setMessage] = useState('');

@@ -21,6 +21,7 @@ const DonationContext = React.createContext<null | {
     setStep: (step: number) => void;
     updateInfo: (key: DonationInfoKey, value: string) => void;
     info: ReturnType<typeof createInitialInfo>;
+    goToStripe: () => Promise<void>;
 }>(null);
 
 export const useDonation = () => {
@@ -31,6 +32,7 @@ export const useDonation = () => {
     return context;
 }
 
+// This used to be a multi-step form, but we're just going to skip to Stripe for now.
 export default function DonateForm({ defaultAmount, onStepChange }: {
     defaultAmount?: string;
     onStepChange?: (step: number) => void;
@@ -49,6 +51,21 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
         }));
     }, [activeTier]);
 
+    const goToStripe = async () => {
+        if(!info.amount) return;
+
+        const res = await fetch('/payments', {
+            method: 'POST',
+            body: JSON.stringify({ amount: info.amount  }),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        const { url } = await res.json();
+        
+        window.location.href = url;
+    }
+
     const _setStep = (step: number) => {
         if(onStepChange) onStepChange(step);
         setStep(step);
@@ -60,14 +77,11 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
         }))
     }
 
-    const value = { setStep: _setStep, step, updateInfo, info };
+    const value = { setStep: _setStep, step, updateInfo, info, goToStripe };
     return(
         <DonationContext.Provider value={value}>
             {step === DONATE_FORM_STEPS.AMOUNT && (
                 <DonationAmount />
-            )}
-            {step === DONATE_FORM_STEPS.DETAILS && (
-                <DonationDetails />
             )}
         </DonationContext.Provider>
     )
