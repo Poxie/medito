@@ -1,12 +1,10 @@
 "use client";
+import { FAQItem } from "@/assets/data/faq/types";
 import CloseIcon from "@/assets/icons/CloseIcon";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-export default function FaqItem({ question, answer }: {
-    question: string;
-    answer: string;
-}) {
+export default function FaqItem({ question, answer }: FAQItem) {
     const [expanded, setExpanded] = useState(false);
 
     return(
