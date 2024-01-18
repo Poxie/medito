@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { DonatorType } from ".";
 import { AnimatePresence, motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
+import { Donator } from "@/types";
 
 const timeAgo = (timestamp: number) => {
     const currentTime = Date.now();
@@ -24,7 +24,7 @@ const timeAgo = (timestamp: number) => {
 
 const MAX_DONATOR_COUNT = 10;
 export default function DonationList({ initialDonators, className }: {
-    initialDonators: DonatorType[];
+    initialDonators: Donator[];
     className?: string;
 }) {
     const [donators, setDonators] = useState(initialDonators);
@@ -36,7 +36,7 @@ export default function DonationList({ initialDonators, className }: {
             const { results } = await res.json();
             const user = results[0];
 
-            const newDonator: DonatorType = {
+            const newDonator: Donator = {
                 name: user.name.first,
                 amount: Math.floor(Math.random() * 100),
                 timestamp: Date.now(),
