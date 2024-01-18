@@ -41,3 +41,17 @@ export const sendMessage = async ({ name, email, message }: {
     });
     return res as Response;
 }
+
+// Function to get a stripe checkout link based on amount.
+export const getStripeLink = async (amount: string | number) => {
+    const res = await fetch('/payments', {
+        method: 'POST',
+        body: JSON.stringify({ amount }),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    const { url } = await res.json();
+
+    return url;
+}

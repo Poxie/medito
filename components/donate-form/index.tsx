@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import DonationAmount from "./DonationAmount";
 import DonationDetails from "./DonationDetails";
 import { useTiers } from "@/contexts/tiers";
+import { getStripeLink } from "@/utils/requests";
 
 export const DONATE_FORM_STEPS = {
     AMOUNT: 0,
@@ -54,14 +55,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
     const goToStripe = async () => {
         if(!info.amount) return;
 
-        const res = await fetch('/payments', {
-            method: 'POST',
-            body: JSON.stringify({ amount: info.amount  }),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        const { url } = await res.json();
+        const url = await getStripeLink(info.amount);
         
         window.location.href = url;
     }
