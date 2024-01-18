@@ -64,7 +64,7 @@ export default function DonationAmount() {
                 onClick={() => {}}
                 className="mt-4 w-full"
             >
-                Next
+                Donate {amount && getCurrencyString(amount)}
             </Button>
         </form>
     )
