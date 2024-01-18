@@ -5,20 +5,29 @@ import Button from "../button";
 import RewardItem from "./RewardItem";
 import DonateModal from "@/modals/donate";
 
-export default function RewardTier({ amount, title, rewards }: RewardGroup) {
+export default function RewardTier({ amount, title, rewards, index }: RewardGroup & {
+    index: number;
+}) {
     const { setModal } = useModal();
 
     const openDonateModal = () => setModal(<DonateModal amount={amount} />);
 
     return(
         <li className="@container border-[1px] border-secondary rounded-lg hover:shadow-md transition-shadow overflow-hidden">
-            <div className="p-4 flex justify-between items-center border-b-[1px] border-b-secondary">
-                <span className="block text-lg font-medium">
-                    ${amount} • {title}
-                </span>
+            <div className="p-4 flex justify-between items-start gap-1 border-b-[1px] border-b-secondary">
+                <div className="flex items-center flex-wrap">
+                    <span className="block text-lg font-medium mr-2">
+                        ${amount} • {title}
+                    </span>
+                    {index !== 0 && (
+                        <span className="text-secondary text-sm">
+                            (and previous rewards)
+                        </span>
+                    )}
+                </div>
                 <Button 
                     onClick={openDonateModal}
-                    className="py-2 px-3 -my-2 -mx-1 text-sm font-bold rounded-md"
+                    className="py-2 px-3 -m-1 text-sm font-bold rounded-md whitespace-nowrap"
                 >
                     Select tier
                 </Button>

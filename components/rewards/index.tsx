@@ -28,9 +28,10 @@ export type RewardGroupItem = RewardGroup['rewards'][0];
 export default function Rewards() {
     return(
         <ul className="grid gap-3">
-            {REWARD_TIERS.map(group => (
+            {REWARD_TIERS.map((group, index) => (
                 <RewardTier 
                     {...group}
+                    index={index}
                     key={group.title}
                 />
             ))}
