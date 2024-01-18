@@ -2,7 +2,6 @@
 import { useModal } from "@/contexts/modal";
 import Button from "../button";
 import RewardItem from "./RewardItem";
-import DonateModal from "@/modals/donate";
 import { RewardGroup } from "@/assets/data/tiers/types";
 import { useTiers } from "@/contexts/tiers";
 import { twMerge } from "tailwind-merge";
@@ -10,13 +9,13 @@ import { twMerge } from "tailwind-merge";
 export default function RewardTier({ id, amount, title, rewards, index }: RewardGroup & {
     index: number;
 }) {
-    const { activeTier, setActiveTier } = useTiers();
+    const { activeTier, setActiveTierId } = useTiers();
     const { setModal } = useModal();
 
-    const isActive = activeTier === id;
+    const isActive = activeTier?.id === id;
 
     const onSelectClick = () => {
-        setActiveTier(isActive ? null : id);
+        setActiveTierId(isActive ? null : id);
     }
 
     return(

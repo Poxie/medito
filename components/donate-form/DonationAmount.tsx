@@ -3,16 +3,20 @@ import Input from "../input";
 import Chips from "../chips";
 import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
+import { useTiers } from "@/contexts/tiers";
 
 export default function DonationAmount() {
-    const { setStep, updateInfo, info: _currentInfo } = useDonation();
+    const { setActiveTierId } = useTiers();
+    const { setStep, updateInfo, info } = useDonation();
 
-    const [amount, setAmount] = useState(_currentInfo.amount);
     const [message, setMessage] = useState('');
 
+    const { amount } = info;
+    
     const onAmountChange = (value: string) => {
-        setAmount(value);
         setMessage('');
+        updateInfo('amount', value);
+        setActiveTierId(null);
     }
     const onNext = (e: React.FormEvent) => {
         e.preventDefault();

@@ -1,9 +1,11 @@
 "use client";
+import tiers from "@/assets/data/tiers/index.json";
+import { RewardGroup, RewardGroupItem } from "@/assets/data/tiers/types";
 import { createContext, useContext, useState } from "react";
 
 const TiersContext = createContext<null | {
-    activeTier: null | string;
-    setActiveTier: (tier: string | null) => void;
+    activeTier: null | RewardGroup;
+    setActiveTierId: (tier: string | null) => void;
 }>(null);
 
 export const useTiers = () => {
@@ -17,9 +19,11 @@ export const useTiers = () => {
 export default function TiersProvider({ children }: {
     children: React.ReactNode;
 }) {
-    const [activeTier, setActiveTier] = useState<null | string>(null);
+    const [activeTierId, setActiveTierId] = useState<null | string>(null);
 
-    const value = { activeTier, setActiveTier };
+    const activeTier = tiers.find(tier => tier.id === activeTierId) || null;
+
+    const value = { activeTier, setActiveTierId };
     return(
         <TiersContext.Provider value={value}>
             {children}

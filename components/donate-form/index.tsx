@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DonationAmount from "./DonationAmount";
 import DonationDetails from "./DonationDetails";
+import { useTiers } from "@/contexts/tiers";
 
 export const DONATE_FORM_STEPS = {
     AMOUNT: 0,
@@ -33,9 +34,19 @@ export const useDonation = () => {
 export default function DonateForm({ defaultAmount }: {
     defaultAmount?: string;
 }) {
-    const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
+    const { activeTier } = useTiers();
 
-    const [info, setInfo] = useState(createInitialInfo(defaultAmount))
+    const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
+    const [info, setInfo] = useState(createInitialInfo(defaultAmount));
+
+    useEffect(() => {
+        if(!activeTier) return;
+
+        setInfo(prev => ({
+            ...prev,
+            amount: activeTier.amount,
+        }));
+    }, [activeTier]);
 
     const updateInfo = (key: DonationInfoKey, value: string) => {
         setInfo(prev => ({
