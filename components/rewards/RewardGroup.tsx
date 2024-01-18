@@ -5,6 +5,7 @@ import RewardItem from "./RewardItem";
 import { RewardGroup } from "@/assets/data/tiers/types";
 import { useTiers } from "@/contexts/tiers";
 import { twMerge } from "tailwind-merge";
+import { getCurrencyString } from "@/utils";
 
 export default function RewardTier({ id, amount, title, rewards, index }: RewardGroup & {
     index: number;
@@ -29,7 +30,7 @@ export default function RewardTier({ id, amount, title, rewards, index }: Reward
             <div className="p-4 flex justify-between items-start gap-1 border-b-[1px] border-b-secondary">
                 <div className="flex items-center flex-wrap">
                     <span className="block text-lg font-medium mr-2">
-                        ${amount} • {title}
+                        {getCurrencyString(amount)} • {title}
                     </span>
                     {index !== 0 && (
                         <span className="text-secondary text-sm">

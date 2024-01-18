@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 import { Donator } from "@/types";
-import { getRelativeTimeString } from "@/utils";
+import { getCurrencyString, getRelativeTimeString } from "@/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useModal } from "@/contexts/modal";
 import SuccessModal from "@/modals/success";
@@ -69,7 +69,7 @@ export default function DonationList({ initialDonators, className }: {
                             <span className="text-secondary">
                                 donated
                                 {' '}
-                                ${donator.amount}
+                                {getCurrencyString(donator.amount)}
                             </span>
                         </span>
                         <span className="text-secondary text-sm">

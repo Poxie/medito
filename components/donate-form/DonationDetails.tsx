@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "../input";
 import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
+import { getCurrencyString } from "@/utils";
 
 export default function DonationDetails() {
     const { setStep, updateInfo, info } = useDonation();
@@ -33,7 +34,6 @@ export default function DonationDetails() {
         setMessage('');
     }
 
-    const amount = Number(info.amount).toLocaleString('default', { style: 'currency', currency: 'USD' });
     return(
         <form onSubmit={onNext}>
             <Input 
@@ -56,7 +56,7 @@ export default function DonationDetails() {
                 className="w-full mt-4"
                 onClick={() => {}}
             >
-                Donate {amount}
+                Donate {getCurrencyString(info.amount)}
             </Button>
             <Button 
                 className="w-full "

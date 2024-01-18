@@ -1,6 +1,7 @@
 import tiers from "@/assets/data/tiers/index.json";
 import Chips from "../chips";
 import { useTiers } from "@/contexts/tiers";
+import { getCurrencyString } from "@/utils";
 
 export default function DonationChips({ className }: {
     className?: string;
@@ -9,7 +10,7 @@ export default function DonationChips({ className }: {
 
     const chips = tiers.map(tier => ({
         id: tier.id,
-        text: `$${tier.amount}`,
+        text: getCurrencyString(tier.amount),
     }))
     return(
         <Chips 
