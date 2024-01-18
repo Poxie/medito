@@ -39,7 +39,11 @@ const config: Config = {
       borderColor: {
         primary: 'var(--border-primary)',
         secondary: 'var(--border-secondary)',
+        'c-primary': 'var(--color-primary)',
       },
+      boxShadow: {
+        success: 'var(--shadow-success)',
+      }
     },
   },
   plugins: [require('@tailwindcss/container-queries')],

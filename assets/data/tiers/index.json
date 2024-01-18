@@ -1,0 +1,18 @@
+[
+    { "id": "1", "amount": "20", "title": "Speed Supporter",
+        "rewards": [
+            { "icon": "headphones", "title": "Exclusive Guided Meditation Sessions", "text": "Donors receive access to a series of exclusive guided meditation sessions led by renowned mindfulness experts, accessible only to those who contribute to the fundraiser." }
+        ]
+    },
+    { "id": "2", "amount": "30", "title": "Education Advocate",
+        "rewards": [
+            { "icon": "heart", "title": "Personalized Thank-You Video from Beneficiaries", "text": "Donors receive access to a series of exclusive guided meditation sessions led by renowned mindfulness experts, accessible only to those who contribute to the fundraiser." },
+            { "icon": "list", "title": "Recognition on the ZenQuest Donor Wall", "text": "Donors can have their names or a personalized message displayed on the ZenQuest Donor Wall within the app, showcasing their commitment to promoting mindfulness and mental well-being." }
+        ]
+    },
+    { "id": "3", "amount": "45", "title": "Scholar Builder",
+        "rewards": [
+            { "icon": "calendar", "title": "Early Access to New Features", "text": "Donors receive access to a series of exclusive guided meditation sessions led by renowned mindfulness experts, accessible only to those who contribute to the fundraiser." }
+        ]
+    }
+]

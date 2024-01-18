@@ -16,6 +16,7 @@
   --width-main: 1200px;
   --max-width-main: 90%;
   --donate-section-width: 375px;
+  --shadow-success: #72CA9770 0px 3px 10px 0px
 }
 
 @layer components {
