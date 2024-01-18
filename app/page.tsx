@@ -1,6 +1,7 @@
 import Contact from '@/components/contact'
 import Donate from '@/components/donate'
 import MobileDonate from '@/components/donate/MobileDonate'
+import Donators from '@/components/donators'
 import FrequentlyAskedQuestions from '@/components/faq'
 import Header from '@/components/header'
 import Rewards from '@/components/rewards'
@@ -27,7 +28,10 @@ export default function Home() {
           <Contact />
         </div>
       </div>
-      <Donate className="hidden lg:block" />
+      <div>
+        <Donate className="hidden lg:block" />
+        <Donators className="mt-2" />
+      </div>
     </main>
   )
 }
