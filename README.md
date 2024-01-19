@@ -21,6 +21,11 @@ Metadata like title and description, as well as opengraph and twitter metadata, 
 - All opengraph metatags are available. You can just add it to the `openGraph` property, even if it's not currently in the file. It will be automatically added.
 - Same goes for the twitter property. All twitter metatags can be added. Just add them to the `twitter` object as a new property.
 
+## Can I change the appearance of the site?
+Yes. All colors, widths, and heights of elements are variables and can be customized in [/app/globals.css](/app/globals.css).
+- All colors on the site can be adjusted [here](https://github.com/Poxie/medito/blob/ed13b050b243de45c87b651ae7b3cf23f14235fa/app/globals.css#L6-L15).
+- Widths and heights of the site, donation sections, modals, etc, can be adjusted [here](https://github.com/Poxie/medito/blob/ed13b050b243de45c87b651ae7b3cf23f14235fa/app/globals.css#L18-L22).
+
 ## How do I replace the dummy data on the site?
 There are a few things that have to be changed and replaced with an actual API. Those can all be found in the [/utils/requests.ts](/utils/requests.ts) file.
 - **The [`getDonationProgress`](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/utils/requests.ts#L3C1-L15C2) function.**
@@ -57,6 +62,10 @@ Environment variables have to be declared in order for the application to work p
 - **STRIPE_SUCCESS_URL** *(not necessary if deployed to Cloudflare)*: The URL Stripe should redirect to upon a successful payment (should just be the domain of the site).
 - **STRIPE_CANCEL_URL** *(not necessary if deployed to Cloudflare)*: The URL Stripe should redirect to upon a canceled payment (should just be the domain of the site).
 - **CF_PAGES_URL** *(not necessary if not used with Cloudflare)*: DO NOT ADD THIS MANUALLY. CLOUDFLARE AUTOMATICALLY ADDS THIS.
+
+## Things I wanted to add but time wouldn't allow
+- An optional campaign image to give the site a little more life.
+- Auto-selecting rewards if a user manually enters an amount that is greater than the reward threshold.
 
 ## Final words
 If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly work with you to integrate the above.
