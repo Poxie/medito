@@ -5,7 +5,7 @@ import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 import { useTiers } from "@/contexts/tiers";
 import DonationChips from "./DonationChips";
-import { getCurrencyString } from "@/utils";
+import { getCurrencyString, isValidInteger } from "@/utils";
 
 const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
@@ -24,8 +24,7 @@ export default function DonationAmount() {
     const onNext = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const isInteger = /^\d+$/.test(amount);
-        if(!isInteger || Number(amount) <= 0) {
+        if(!isValidInteger(amount)) {
             setMessage('Please enter a valid amount.');
             return;
         }
@@ -64,7 +63,7 @@ export default function DonationAmount() {
                 onClick={() => {}}
                 className="mt-4 w-full"
             >
-                Donate {amount && getCurrencyString(amount)}
+                Donate {isValidInteger(amount) && getCurrencyString(amount)}
             </Button>
         </form>
     )

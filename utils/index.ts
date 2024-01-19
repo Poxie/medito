@@ -43,3 +43,8 @@ export const getCurrencyString = (amount: string | number) => {
 
     return currencyString;
 }
+
+export const isValidInteger = (value: string) => {
+    const isInteger = /^\d+$/.test(value);
+    return isInteger && parseInt(value) > 0;
+}
