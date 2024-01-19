@@ -66,7 +66,7 @@ Environment variables have to be declared in order for the application to work p
 ## Things I would add
 - An optional campaign image to give the site a little more life.
 - Auto-selecting rewards if a user manually enters an amount that is greater than the reward threshold.
-- A hamburger menu for the navbar tabs on smaller devices.
+- Monthly donations toggle.
 
 ## Final words
 If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly work with you to integrate the above.
