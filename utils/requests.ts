@@ -51,3 +51,11 @@ export const getStripeLink = async (amount: string | number) => {
 
     return url;
 }
+
+// Function to get specific donation session data.
+export const getDonationSession = async (sessionId: string) => {
+    const res = await fetch(`/payments/${sessionId}`);
+    if(!res.ok) throw new Error('Failed to confirm donation');
+    
+    return await res.json() as Donator;
+}
