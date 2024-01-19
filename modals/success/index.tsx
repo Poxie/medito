@@ -3,6 +3,7 @@ import ModalHeader from "../ModalHeader";
 import { useEffect, useState } from "react";
 import StatusSpinner from "@/components/status-spinner";
 import { motion } from "framer-motion";
+import { getCurrencyString } from "@/utils";
 
 export default function SuccessModal({ sessionId }: {
     sessionId: string;
@@ -24,7 +25,7 @@ export default function SuccessModal({ sessionId }: {
             .then(data => {
                 setStatus({
                     status: 'success',
-                    statusText: `Thank you for your $${data.amount} donation, ${data.name}!`,
+                    statusText: `Thank you for your ${getCurrencyString(data.amount)} donation, ${data.name}!`,
                 });
             })
             .catch(error => {
