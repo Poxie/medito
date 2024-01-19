@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import StatusSpinner from "@/components/status-spinner";
 import { motion } from "framer-motion";
 import { getCurrencyString } from "@/utils";
+import { getDonationSession } from "@/utils/requests";
 
 export default function SuccessModal({ sessionId }: {
     sessionId: string;
@@ -17,7 +18,7 @@ export default function SuccessModal({ sessionId }: {
     });
 
     useEffect(() => {
-        fetch(`/payments/${sessionId}`)
+        getDonationSession(sessionId)
             .then(res => {
                 if(!res.ok) throw new Error('Failed to confirm donation');
                 return res.json();
