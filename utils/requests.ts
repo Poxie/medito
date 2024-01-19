@@ -1,4 +1,4 @@
-import { DonationProgress, Donator } from "@/types";
+import { DonationProgress, Donator, MessageProps } from "@/types";
 
 // Mock function to get donation progress, i.e., current donations and goal donations.
 // Should return an object with the 'current' and 'goal' properties.
@@ -29,11 +29,7 @@ export const getDonators = async () => {
 
 // Mock function to send a message.
 // Should return a Response object.
-export const sendMessage = async ({ name, email, message }: {
-    name: string;
-    email: string;
-    message: string;
-}) => {
+export const sendMessage = async ({ name, email, message }: MessageProps) => {
     const res = await new Promise((res, rej) => {
         setTimeout(() => {
             res(new Response());

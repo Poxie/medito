@@ -5,8 +5,9 @@ import Button from "../button";
 import { twMerge } from "tailwind-merge";
 import { sendMessage } from "@/utils/requests";
 import { isValidEmail } from "@/utils";
+import { MessageProps } from "@/types";
 
-const getInitialInfo = () => ({
+const getInitialInfo: () => MessageProps = () => ({
     name: '',
     email: '',
     message: '',

@@ -7,3 +7,8 @@ export type Donator = {
     amount: number;
     timestamp: number;
 }
+export type MessageProps = {
+    name: string;
+    email: string;
+    message: string;
+}
