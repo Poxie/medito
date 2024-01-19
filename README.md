@@ -16,7 +16,7 @@ All text content on the site can be configured in the [/assets/data/](/assets/da
 ## How can I change the metadata for the site?
 Metadata like title and description, as well as opengraph and twitter metadata, can all easily be configured in [/assets/data/metadata/index.json](/assets/data/metadata/index.json).
 - Changing the title and description properties will change the title and description of the metadata for the site, duh..
-- When it comes to opengraph, all opengraph metatags are available. You can just add it to the `openGraph` property, even if it's not currently in the file. It will be automatically added.
+- All opengraph metatags are available. You can just add it to the `openGraph` property, even if it's not currently in the file. It will be automatically added.
 - Same goes for the twitter property. All twitter metatags can be added. Just add them to the `twitter` object as a new property.
 
 ## How do I replace the dummy data on the site?
@@ -34,19 +34,19 @@ There are a few things that have to be changed and replaced with an actual API. 
     - It takes a [`MessageProps`](https://github.com/Poxie/medito/blob/6caf2a47550928d65a7798456e3125222815026f/types.ts#L10C1-L14C2) object as an argument.
     - It should return the raw http response object.
 
-Now for the Stripe functions I have implemented, and are fully integrated with Stripe. These functions currently use the Next13's app directory route handlers.
+Now for the Stripe functions I have implemented that are fully integrated with the Stripe API. These functions currently make fetch requests to Next13's app directory route handlers, which intereact with the Stripe API.
 - **The [`getStripeLink`](https://github.com/Poxie/medito/blob/e45e3bd947a919dd13900425a589d0e3a12b8a8f/utils/requests.ts#L41-L53) function.**
-    - This function is used when the donate button is clicked.
+    - This function is used in [/components/donate-form/index.tsx](https://github.com/Poxie/medito/blob/9068c6cd6b0e11eea1b6046879568deb34fabd03/components/donate-form/index.tsx#L58) when the donate button is clicked.
     - It takes an amount of type string or number as an argument.
     - It returns a Stripe checkout URL.
 - **The [`getDonationSession`](https://github.com/Poxie/medito/blob/e45e3bd947a919dd13900425a589d0e3a12b8a8f/utils/requests.ts#L55-L61) function.**
-    - This function is used in [/modals/success/index.tsx](/modals/success/index.tsx) after the user has been redirected back to the site to confirm the donation.
+    - This function is used in [/modals/success/index.tsx](https://github.com/Poxie/medito/blob/9068c6cd6b0e11eea1b6046879568deb34fabd03/modals/success/index.tsx#L21) after the user has been redirected back to the site to confirm the donation.
     - It takes a sessionId of type string as an argument.
     - It should return a [Donator](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/types.ts#L5C1-L9) object.
 
   
 ## The recent donators list
-Currently, a random person is fetched from an API every 12 seconds, and added to the recent donation list. This happens in [/components/donators/DonationList.tsx](/components/donators/DonationList.tsx). This needs to be replaced with some sort of Webhook/WebSockets implementation to listen for Stripe payments.
+Currently, a random person is fetched from an API every 12 seconds, and added to the recent donation list. This happens in [/components/donators/DonationList.tsx](https://github.com/Poxie/medito/blob/9068c6cd6b0e11eea1b6046879568deb34fabd03/components/donators/DonationList.tsx#L34-L51). This needs to be replaced with some sort of Webhook/WebSockets implementation to listen for Stripe payments.
  
 ## Environment variables
 Environment variables have to be declared in order for the application to work properly. Variables should be in a file called `.env.production`, or for development purposes `.env.development`, and located in the root directory.
@@ -57,7 +57,7 @@ Environment variables have to be declared in order for the application to work p
 - **CF_PAGES_URL** *(not necessary if not used with Cloudflare)*: DO NOT ADD THIS MANUALLY. CLOUDFLARE AUTOMATICALLY ADDS THIS.
 
 ## Final words
-If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly help you integrate all of the above.
+If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly help you integrate the above.
 
 ## Fun links
 - [Figma design](https://www.figma.com/file/XJLLyttYk2sUvSMcYEgj01/Untitled?type=design&node-id=0%3A1&mode=design&t=rnRytYMPQRzNdHrw-1)
