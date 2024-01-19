@@ -48,3 +48,7 @@ export const isValidInteger = (value: string) => {
     const isInteger = /^\d+$/.test(value);
     return isInteger && parseInt(value) > 0;
 }
+export const isValidEmail = (value: string) => {
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    return isEmail;
+}

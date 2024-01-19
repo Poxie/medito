@@ -4,6 +4,7 @@ import Input from "../input";
 import Button from "../button";
 import { twMerge } from "tailwind-merge";
 import { sendMessage } from "@/utils/requests";
+import { isValidEmail } from "@/utils";
 
 const getInitialInfo = () => ({
     name: '',
@@ -35,6 +36,10 @@ export default function Contact() {
 
         if(!info.name || !info.email || !info.message) {
             showErrorMessage('Please fill out all fields.');
+            return;
+        }
+        if(!isValidEmail(info.email)) {
+            showErrorMessage('Please enter a valid email.');
             return;
         }
 
