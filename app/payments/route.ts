@@ -36,8 +36,8 @@ export async function POST(request: Request) {
             },
         ],
         mode: 'payment',
-        success_url: `${process.env.CF_PAGES_URL}?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: process.env.CF_PAGES_URL,
+        success_url: `${process.env.CF_PAGES_URL || process.env.STRIPE_SUCCESS_URL}?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: process.env.CF_PAGES_URL || process.env.STRIPE_CANCEL_URL,
     });
     
     return Response.json({ url: session.url });
