@@ -4,7 +4,7 @@ The goal with this site is to provide a customizable and flexible experience, al
 
 Use these credentials to test the Stripe integration and the success callback after payment:
 - Card number: 4242 4242 4242 4242
-- MM/YY 12/26
+- MM/YY: 12/26
 - CVV: 222
 
 ## How can I customize the content of the site?
