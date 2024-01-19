@@ -63,7 +63,7 @@ Environment variables have to be declared in order for the application to work p
 - **STRIPE_CANCEL_URL** *(not necessary if deployed to Cloudflare)*: The URL Stripe should redirect to upon a canceled payment (should just be the domain of the site).
 - **CF_PAGES_URL** *(not necessary if not used with Cloudflare)*: DO NOT ADD THIS MANUALLY. CLOUDFLARE AUTOMATICALLY ADDS THIS.
 
-## Things I wanted to add
+## Things I would add
 - An optional campaign image to give the site a little more life.
 - Auto-selecting rewards if a user manually enters an amount that is greater than the reward threshold.
 
