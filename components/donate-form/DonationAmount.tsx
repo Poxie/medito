@@ -29,7 +29,7 @@ export default function DonationAmount() {
             return;
         }
         if(Number(amount) > MAX_AMOUNT) {
-            setMessage(`Please enter an amount less than ${getCurrencyString(amount)}.`);
+            setMessage(`Please enter an amount of ${getCurrencyString(MAX_AMOUNT)} or less.`);
             return;
         }
 
