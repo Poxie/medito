@@ -41,7 +41,7 @@ export default function Home() {
           <Contact />
         </div>
       </div>
-      <div className='hidden lg:block sticky top-12'>
+      <div className='hidden lg:block sticky top-8'>
         <Donate />
         <Donators className="mt-2" />
       </div>
