@@ -1,5 +1,5 @@
 # Medito Fundraiser App
-**The site is live [here](https://b88d30cb.medito.pages.dev/).**
+**The site is live [here](https://4cca4225.medito.pages.dev/).**
 
 This is a fundraiser single page application for [Medito Foundation](https://meditofoundation.org) created by [Poxen](https://poxen.dev).<br/>
 The goal with this site is to provide a customizable and flexible experience, allowing for any type of campaign.
