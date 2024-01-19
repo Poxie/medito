@@ -1,5 +1,5 @@
 # Medito Fundraiser App
-**The site is live [here](https://3d87592b.medito.pages.dev/).**
+**The site is live [here](https://b88d30cb.medito.pages.dev/).**
 
 This is a fundraiser single page application for [Medito Foundation](https://meditofoundation.org) created by [Poxen](https://poxen.dev).<br/>
 The goal with this site is to provide a customizable and flexible experience, allowing for any type of campaign.
@@ -59,7 +59,7 @@ Environment variables have to be declared in order for the application to work p
 - **CF_PAGES_URL** *(not necessary if not used with Cloudflare)*: DO NOT ADD THIS MANUALLY. CLOUDFLARE AUTOMATICALLY ADDS THIS.
 
 ## Final words
-If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly help you integrate the above.
+If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly work with you to integrate the above.
 
 ## Fun links
 - [Figma design](https://www.figma.com/file/XJLLyttYk2sUvSMcYEgj01/Untitled?type=design&node-id=0%3A1&mode=design&t=rnRytYMPQRzNdHrw-1)
