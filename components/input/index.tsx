@@ -10,7 +10,7 @@ export default function Input({ type='text', value, onChange, placeholder, class
     const props = { 
         onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange(e.target.value), 
         className: twMerge(
-            "w-full p-4 rounded-lg bg-secondary border-[1px] border-secondary",
+            "w-full p-3 rounded-lg bg-secondary border-[1px] border-secondary",
             className,
         ),
         value, 
