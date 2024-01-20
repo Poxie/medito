@@ -17,5 +17,5 @@ export default function Input({ type='text', value, onChange, placeholder, class
         placeholder, 
     };
     
-    return type === 'text' ? <input {...props} /> : <textarea {...props} />
+    return type === 'text' ? <input {...props} /> : <textarea {...props} style={{ minHeight: 100 }} />
 }
