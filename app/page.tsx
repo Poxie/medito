@@ -18,27 +18,33 @@ export default function Home() {
         <MobileDonate className="mb-6 lg:hidden sticky top-0 bg-primary z-30" />
         <Header className="mx-auto max-w-main lg:max-w-[unset]" />
         <div className="py-16 mx-auto max-w-main lg:max-w-[unset]">
-          <SectionHeader 
-            className="mb-3"
-            id="rewards"
-          >
-            Donation rewards
-          </SectionHeader>
-          <Rewards />
-          <SectionHeader 
-            className="mt-12 mb-3"
-            id="faq"
-          >
-            Frequently Asked Questions
-          </SectionHeader>
-          <FrequentlyAskedQuestions />
-          <SectionHeader
-            className="mt-12 mb-3"
-            id="contact"
-          >
-            Still got questions?
-          </SectionHeader>
-          <Contact />
+          <section>
+            <SectionHeader 
+              className="mb-3"
+              id="rewards"
+            >
+              Donation rewards
+            </SectionHeader>
+            <Rewards />
+          </section>
+          <section>
+            <SectionHeader 
+              className="mt-12 mb-3"
+              id="faq"
+            >
+              Frequently Asked Questions
+            </SectionHeader>
+            <FrequentlyAskedQuestions />
+          </section>
+          <section>
+            <SectionHeader
+              className="mt-12 mb-3"
+              id="contact"
+            >
+              Still got questions?
+            </SectionHeader>
+            <Contact />
+          </section>
         </div>
       </div>
       <div className='hidden lg:block sticky top-8'>

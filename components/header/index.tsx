@@ -6,7 +6,7 @@ export default function Header({ className }: {
 }) {
     const { title, description } = campaign;
     return(
-        <div className={className}>
+        <header className={className}>
             <h1 className="text-3xl lg:text-4xl font-bold">
                 {title}
             </h1>
@@ -18,6 +18,6 @@ export default function Header({ className }: {
                 ))}
             </div>
             <HeaderButtons />
-        </div>
+        </header>
     )
 }
