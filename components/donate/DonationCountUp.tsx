@@ -1,9 +1,8 @@
 "use client";
 import CountUp from "react-countup";
 
-export default function DonationCountUp({ count, className }: {
+export default function DonationCountUp({ count }: {
     count: number;
-    className?: string;
 }) {
     const currentDonationCount = count.toLocaleString('default', { currency: 'USD', style: 'currency' });
     return(

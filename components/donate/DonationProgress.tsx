@@ -13,7 +13,6 @@ export default async function DonationProgress({ className }: {
         <div className={className}>
             <DonationCountUp 
                 count={current}
-                className="text-2xl text-[28px] font-bold"
             />
             {' '}
             <span className="text-secondary">

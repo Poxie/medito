@@ -2,7 +2,7 @@ import { useState } from "react";
 import Input from "../input";
 import Chips from "../chips";
 import Button from "../button";
-import { DONATE_FORM_STEPS, useDonation } from ".";
+import { useDonation } from ".";
 import { useTiers } from "@/contexts/tiers";
 import DonationChips from "./DonationChips";
 import { getCurrencyString, isValidInteger } from "@/utils";

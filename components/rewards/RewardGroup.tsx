@@ -1,6 +1,5 @@
 "use client";
 import { useModal } from "@/contexts/modal";
-import Button from "../button";
 import RewardItem from "./RewardItem";
 import { RewardGroup } from "@/assets/data/tiers/types";
 import { useTiers } from "@/contexts/tiers";

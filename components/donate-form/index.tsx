@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import DonationAmount from "./DonationAmount";
-import DonationDetails from "./DonationDetails";
 import { useTiers } from "@/contexts/tiers";
 import { getStripeLink } from "@/utils/requests";
 
@@ -17,6 +16,7 @@ type Info = {
     billingPeriod: 'month' | undefined;
 }
 type InfoKey = keyof Info;
+
 const createInitialInfo: (amount?: string) => Info = (amount='') => ({
     amount,
     displayName: '',

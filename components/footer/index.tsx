@@ -1,11 +1,6 @@
 import Image from "next/image";
 import NavigationTabs from "../navigation-tabs";
 
-const FOOTER_TABS = [
-    { text: 'Rewards' },
-    { text: 'FAQ' },
-    { text: 'Contact' },
-]
 export default function Footer() {
     return(
         <footer className="py-6 border-t-[1px] border-t-secondary">
