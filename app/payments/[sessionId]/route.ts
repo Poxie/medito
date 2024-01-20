@@ -14,7 +14,7 @@ export async function GET(request: Request, { params }: { params: { sessionId: s
         if(error.statusCode === 404) {
             return new Response('Session not found.', { status: 404 });
         }
-        return new Response('Internal server error.', { status: 500 });
+        return new Response(`Internal server error: ${error.message}`, { status: 500 });
     }
 }
 
