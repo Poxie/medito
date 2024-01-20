@@ -57,11 +57,11 @@ export default function DonationAmount() {
             <Chips
                 className="mt-2"
                 chips={[
-                    { id: 'one-time', text: 'Once' },
-                    { id: 'monthly', text: 'Monthly' },
+                    { id: 'once', text: 'Once' },
+                    { id: 'month', text: 'Monthly' },
                 ]}
-                activeChip={info.billingPeriod}
-                onChipClick={period => updateInfo('billingPeriod', period)}
+                activeChip={info.billingPeriod || 'once'}
+                onChipClick={period => updateInfo('billingPeriod', period !== 'once' ? period : undefined)}
             />
             {message && (
                 <span className="block mt-2 -mb-2 text-red-500 text-sm">
@@ -73,6 +73,7 @@ export default function DonationAmount() {
                 className="mt-4 w-full"
             >
                 Donate {isValidInteger(amount) && getCurrencyString(amount)}
+                {info.billingPeriod === 'month' && ' monthly'}
             </Button>
         </form>
     )

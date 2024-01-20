@@ -10,19 +10,25 @@ export const DONATE_FORM_STEPS = {
     DETAILS: 1,
 }
 
-const createInitialInfo = (amount='') => ({
+type Info = {
+    amount: string;
+    displayName: string;
+    email: string;
+    billingPeriod: 'month' | undefined;
+}
+type InfoKey = keyof Info;
+const createInitialInfo: (amount?: string) => Info = (amount='') => ({
     amount,
     displayName: '',
     email: '',
-    billingPeriod: 'one-time',
+    billingPeriod: undefined,
 })
-type DonationInfoKey = keyof ReturnType<typeof createInitialInfo>;
 
 const DonationContext = React.createContext<null | {
     step: number;
     setStep: (step: number) => void;
-    updateInfo: (key: DonationInfoKey, value: string) => void;
-    info: ReturnType<typeof createInitialInfo>;
+    updateInfo: (key: InfoKey, value: Info[InfoKey]) => void;
+    info: Info;
     goToStripe: () => Promise<void>;
 }>(null);
 
@@ -56,7 +62,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
     const goToStripe = async () => {
         if(!info.amount) return;
 
-        const url = await getStripeLink(info.amount);
+        const url = await getStripeLink(info.amount, info.billingPeriod);
         
         window.location.href = url;
     }
@@ -65,7 +71,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
         if(onStepChange) onStepChange(step);
         setStep(step);
     }
-    const updateInfo = (key: DonationInfoKey, value: string) => {
+    const updateInfo = (key: InfoKey, value: Info[InfoKey]) => {
         setInfo(prev => ({
             ...prev,
             [key]: value,
