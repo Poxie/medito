@@ -9,7 +9,7 @@ export default function Chips({ chips, onChipClick, className, chipClassName, ac
 }) {
     return(
         <ul className={twMerge(
-            "flex gap-2",
+            "p-1 flex bg-secondary rounded-md border-[1px] border-secondary",
             className,
         )}>
             {chips.map(chip => (
@@ -18,8 +18,8 @@ export default function Chips({ chips, onChipClick, className, chipClassName, ac
                         type="button"
                         onClick={() => onChipClick(chip.id)}
                         className={twMerge(
-                            "w-full px-4 py-3 text-sm bg-secondary border-[1px] border-secondary rounded-md transition-colors hover:bg-tertiary",
-                            activeChip === chip.id && "bg-tertiary",
+                            "w-full py-2 rounded-md text-sm font-medium shadow-none transition-[box-shadow,background-color]",
+                            activeChip === chip.id && "bg-primary shadow",
                             chipClassName,
                         )}
                     >
