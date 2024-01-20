@@ -28,26 +28,26 @@ Yes. All colors, widths, and heights of elements are variables and can be custom
 
 ## How do I replace the dummy data on the site?
 There are a few things that have to be changed and replaced with an actual API. Those can all be found in the [/utils/requests.ts](/utils/requests.ts) file.
-- **The [`getDonationProgress`](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/utils/requests.ts#L3C1-L15C2) function.**
+- **The [`getDonationProgress`](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/utils/requests.ts#L6-L16) function.**
     - This function is used to get the current amount donated and the current goal.
     - It takes no arguments.
     - It should return a [DonationProgress](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/types.ts#L1-L4) object.
-- **The [`getDonators`](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/utils/requests.ts#L17-L28) function.**
+- **The [`getDonators`](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/utils/requests.ts#L20-L29) function.**
     - This function is used to get the initial list of recent donators.
     - It takes no arguments.
     - It should return an array of [Donator](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/types.ts#L5C1-L9).
-- **The [`sendMessage`](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/utils/requests.ts#L30C1-L43C2) function.**
+- **The [`sendMessage`](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/utils/requests.ts#L55-L62) function.**
     - This function is used to send a message from the contact form.
     - It takes a [`MessageProps`](https://github.com/Poxie/medito/blob/6caf2a47550928d65a7798456e3125222815026f/types.ts#L10C1-L14C2) object as an argument.
     - It should return the raw http response object.
 
 Now for the Stripe functions I have implemented that are fully integrated with the Stripe API. These functions currently make fetch requests to Next13's app directory route handlers, which intereact with the Stripe API.
-- **The [`getStripeLink`](https://github.com/Poxie/medito/blob/e45e3bd947a919dd13900425a589d0e3a12b8a8f/utils/requests.ts#L41-L53) function.**
-    - This function is used in [/components/donate-form/index.tsx](https://github.com/Poxie/medito/blob/9068c6cd6b0e11eea1b6046879568deb34fabd03/components/donate-form/index.tsx#L58) when the donate button is clicked.
+- **The [`getStripeLink`](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/utils/requests.ts#L40-L51) function.**
+    - This function is used in [/components/donate-form/index.tsx](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/components/donate-form/index.tsx#L65) when the donate button is clicked.
     - It takes an amount of type string or number as an argument.
     - It returns a Stripe checkout URL.
-- **The [`getDonationSession`](https://github.com/Poxie/medito/blob/e45e3bd947a919dd13900425a589d0e3a12b8a8f/utils/requests.ts#L55-L61) function.**
-    - This function is used in [/modals/success/index.tsx](https://github.com/Poxie/medito/blob/9068c6cd6b0e11eea1b6046879568deb34fabd03/modals/success/index.tsx#L21) after the user has been redirected back to the site to confirm the donation.
+- **The [`getDonationSession`](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/utils/requests.ts#L32-L37) function.**
+    - This function is used in [/modals/success/index.tsx](https://github.com/Poxie/medito/blob/b8a9ad35620fd145da1b2ed73cd321e6fc6432c6/modals/success/index.tsx#L20) after the user has been redirected back to the site to confirm the donation.
     - It takes a sessionId of type string as an argument.
     - It should return a [Donator](https://github.com/Poxie/medito/blob/23ce5307a1c412cc22b52aca0882cdc20c68dac7/types.ts#L5C1-L9) object.
 
@@ -66,7 +66,6 @@ Environment variables have to be declared in order for the application to work p
 ## Things I would add
 - An optional campaign image to give the site a little more life.
 - Auto-selecting rewards if a user manually enters an amount that is greater than the reward threshold.
-- Monthly donations toggle.
 
 ## Final words
 If there is anything that is unclear, or not properly covered, don't hesitate to reach out and I will happily give a better explanation. I have had a lot of fun with this site, and I would gladly work with you to integrate the above.
