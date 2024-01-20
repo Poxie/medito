@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import StatusSpinner from "@/components/status-spinner";
 import { motion } from "framer-motion";
 import { getCurrencyString } from "@/utils";
-import { getDonationSession } from "@/utils/requests";
+import { APIRequest } from "@/utils/requests";
 
 export default function SuccessModal({ sessionId }: {
     sessionId: string;
@@ -17,7 +17,7 @@ export default function SuccessModal({ sessionId }: {
     });
 
     useEffect(() => {
-        getDonationSession(sessionId)
+        APIRequest.getDonationSession(sessionId)
             .then(data => {
                 setStatus({
                     status: 'success',

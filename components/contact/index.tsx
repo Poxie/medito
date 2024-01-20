@@ -3,9 +3,9 @@ import { useState } from "react";
 import Input from "../input";
 import Button from "../button";
 import { twMerge } from "tailwind-merge";
-import { sendMessage } from "@/utils/requests";
 import { isValidEmail } from "@/utils";
 import { MessageProps } from "@/types";
+import { APIRequest } from "@/utils/requests";
 
 const getInitialInfo: () => MessageProps = () => ({
     name: '',
@@ -45,7 +45,7 @@ export default function Contact() {
         }
 
         setLoading(true);
-        const response = await sendMessage(info);
+        const response = await APIRequest.sendMessage(info);
 
         if(!response.ok) {
             showErrorMessage('Something went wrong. Please try again later.');

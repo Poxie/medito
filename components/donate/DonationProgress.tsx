@@ -1,12 +1,12 @@
 import DonationProgressBar from "./DonationProgressBar";
 import DonationCountUp from "./DonationCountUp";
-import { getDonationProgress } from "@/utils/requests";
+import { APIRequest } from "@/utils/requests";
 
 
 export default async function DonationProgress({ className }: {
     className?: string;
 }) {
-    const { current, goal } = await getDonationProgress();
+    const { current, goal } = await APIRequest.getDonationProgress();
     const percent = (current / goal) * 100;
 
     return(
