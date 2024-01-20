@@ -1,4 +1,3 @@
-import { Donator } from "@/types";
 import ModalHeader from "../ModalHeader";
 import { useEffect, useState } from "react";
 import StatusSpinner from "@/components/status-spinner";
