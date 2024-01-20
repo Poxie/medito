@@ -41,19 +41,28 @@ export default function DonationAmount() {
     return(
         <form onSubmit={onNext}>
             <div className="flex">
-                <div className="px-5 flex items-center bg-secondary border-[1px] border-secondary rounded-l-lg text-secondary">
+                <div className="px-5 flex items-center bg-secondary border-[1px] border-secondary rounded-l-md text-secondary">
                     <span>
                         $
                     </span>
                 </div>
                 <Input 
-                    className="rounded-l-none border-l-0"
+                    className="rounded-md rounded-l-none border-l-0"
                     placeholder="Amount"
                     onChange={onAmountChange}
                     value={amount}
                 />
             </div>
             <DonationChips className="mt-2" />
+            <Chips
+                className="mt-2"
+                chips={[
+                    { id: 'one-time', text: 'Once' },
+                    { id: 'monthly', text: 'Monthly' },
+                ]}
+                activeChip={info.billingPeriod}
+                onChipClick={period => updateInfo('billingPeriod', period)}
+            />
             {message && (
                 <span className="block mt-2 -mb-2 text-red-500 text-sm">
                     {message}

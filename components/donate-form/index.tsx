@@ -14,6 +14,7 @@ const createInitialInfo = (amount='') => ({
     amount,
     displayName: '',
     email: '',
+    billingPeriod: 'one-time',
 })
 type DonationInfoKey = keyof ReturnType<typeof createInitialInfo>;
 
