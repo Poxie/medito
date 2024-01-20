@@ -55,7 +55,7 @@ export default function DonationList({ initialDonators, className }: {
             "max-h-donation-list overflow-hidden",
             className,
         )}>
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
                 {donators.slice(0, MAX_DONATOR_COUNT).map(donator => (
                     <motion.li 
                         initial={{ translateY: -50 }}
