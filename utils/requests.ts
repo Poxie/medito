@@ -45,6 +45,9 @@ export const APIRequest = {
                 'Content-Type': 'application/json',
             }
         })
+
+        if(!res.ok) throw new Error((await res.json()).message);
+
         const { url } = await res.json();
 
         return url;

@@ -29,14 +29,13 @@ export default function DonationAmount() {
             setMessage('Please enter a valid amount.');
             return;
         }
-        if(Number(amount) > MAX_AMOUNT) {
-            setMessage(`Please enter an amount of ${getCurrencyString(MAX_AMOUNT)} or less.`);
-            return;
-        }
 
         updateInfo('amount', amount);
         // setStep(DONATE_FORM_STEPS.DETAILS);
-        goToStripe();
+
+        goToStripe(error => {
+            setMessage(error);
+        });
     }
 
     return(

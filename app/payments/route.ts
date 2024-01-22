@@ -13,18 +13,6 @@ export async function POST(request: Request) {
     }
 
     const { amount, interval, currency='usd' } = body;
-    if(!amount) {
-        return new Response('Invalid amount', { status: 400 });
-    }
-    if(interval && interval !== 'month') {
-        return new Response('Invalid interval', { status: 400 });
-    }
-    if(Number(amount) > MAX_AMOUNT) {
-        return new Response('Amount must be 10000 or less.', { status: 400 });
-    }
-    if(!isValidCurrency(currency)) {
-        return new Response('Invalid currency', { status: 400 });
-    }
 
     try {
         const amountData = interval ? {
@@ -58,7 +46,7 @@ export async function POST(request: Request) {
 
         return Response.json({ url: session.url });
     } catch(error: any) {
-        return new Response(`Internal server error: ${error.message}`, { status: 500 });
+        return Response.json({ message: error.message }, { status: 500 });
     }
     
 }

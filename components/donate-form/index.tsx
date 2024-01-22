@@ -31,7 +31,7 @@ const DonationContext = React.createContext<null | {
     setStep: (step: number) => void;
     updateInfo: (key: InfoKey, value: Info[InfoKey]) => void;
     info: Info;
-    goToStripe: () => Promise<void>;
+    goToStripe: (onError: (message: string) => void) => Promise<void>;
 }>(null);
 
 export const useDonation = () => {
@@ -61,12 +61,15 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
         }));
     }, [activeTier]);
 
-    const goToStripe = async () => {
+    const goToStripe = async (onError: (message: string) => void) => {
         if(!info.amount) return;
 
-        const url = await APIRequest.getStripeLink(info.amount, info.currency, info.billingPeriod);
-        
-        window.location.href = url;
+        try {
+            const url = await APIRequest.getStripeLink(info.amount, info.currency, info.billingPeriod);
+            window.location.href = url;
+        } catch(error: any) {
+            onError(error.message)
+        }
     }
 
     const _setStep = (step: number) => {
