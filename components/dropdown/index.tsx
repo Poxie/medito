@@ -102,6 +102,7 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
                             onChange={setSearch}
                             placeholder="Search"
                             className="sticky top-0 rounded-none rounded-t-md outline-none"
+                            focusOnMount
                         />
                         {filteredItems.length !== 0 && (
                             <ul className="p-2">
