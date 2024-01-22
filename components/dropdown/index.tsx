@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import Input from "../input";
 
+const MAX_HEIGHT = 250;
+
 export type DropdownItem = {
     id: string;
     text: string;
@@ -16,6 +18,7 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
     emptyLabel?: string;
     renderSelectedItem?: (selectedItem: DropdownItem) => React.ReactNode;
 }) {
+    const [position, setPosition] = useState<'bottom' | 'top'>('bottom');
     const [open, setOpen] = useState(false);
     const [search, setSearch] = useState('');
     
@@ -30,6 +33,17 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
 
         document.addEventListener('click', handleClickOutside);
         return () => document.removeEventListener('click', handleClickOutside);
+    }, []);
+
+    // Checks what direction the dropdown should open
+    useEffect(() => {
+        if(!ref.current) return;
+
+        const { top, height } = ref.current.getBoundingClientRect();
+        if(top + height + MAX_HEIGHT > window.innerHeight) {
+            return setPosition('top');
+        }
+        setPosition('bottom');
     }, []);
 
     const handleClick = (id: string) => {
@@ -76,16 +90,21 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
                         initial={{ opacity: 0, translateY: 6, scale: 0.96 }}
                         animate={{ opacity: 1, translateY: 0, scale: 1 }}
                         transition={{ bounce: false, duration: .2 }}
-                        className="min-w-[180px] z-30 absolute left-0 top-[calc(100%+.25rem)] bg-secondary border-[1px] border-secondary rounded-md box-shadow-lg overflow-hidden"
+                        className={twMerge(
+                            "[--width:180px] [--spacing:.5rem] min-w-[--width] z-30 absolute left-0 bg-secondary border-[1px] border-secondary rounded-md box-shadow-lg overflow-auto",
+                            position === 'bottom' && "top-[calc(100%+var(--spacing))]",
+                            position === 'top' && "bottom-[calc(100%+var(--spacing))]",
+                        )}
+                        style={{ maxHeight: MAX_HEIGHT }}
                     >
                         <Input 
                             value={search}
                             onChange={setSearch}
                             placeholder="Search"
-                            className="rounded-none rounded-t-md outline-none"
+                            className="sticky top-0 rounded-none rounded-t-md outline-none"
                         />
                         {filteredItems.length !== 0 && (
-                            <ul className="p-2 max-h-[250px] overflow-auto">
+                            <ul className="p-2">
                                 {filteredItems.map(item => (
                                     <li key={item.id}>
                                         <button 
