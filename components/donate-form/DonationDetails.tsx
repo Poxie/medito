@@ -3,9 +3,11 @@ import Input from "../input";
 import Button from "../button";
 import { DONATE_FORM_STEPS, useDonation } from ".";
 import { getCurrencyString } from "@/utils";
+import { useCurrency } from "@/contexts/currency";
 
 // This used to be the second step in the donation form, but we're skipping it for now.
 export default function DonationDetails() {
+    const { currency } = useCurrency();
     const { setStep, updateInfo, info } = useDonation();
     const [message, setMessage] = useState('');
 
@@ -57,7 +59,7 @@ export default function DonationDetails() {
                 className="w-full mt-4"
                 onClick={() => {}}
             >
-                Donate {getCurrencyString(info.amount)}
+                Donate {getCurrencyString(info.amount, 1, currency)}
             </Button>
             <Button 
                 className="w-full "
