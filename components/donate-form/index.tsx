@@ -11,6 +11,7 @@ export const DONATE_FORM_STEPS = {
 
 type Info = {
     amount: string;
+    currency: string;
     displayName: string;
     email: string;
     billingPeriod: 'month' | undefined;
@@ -19,6 +20,7 @@ type InfoKey = keyof Info;
 
 const createInitialInfo: (amount?: string) => Info = (amount='') => ({
     amount,
+    currency: 'usd',
     displayName: '',
     email: '',
     billingPeriod: undefined,

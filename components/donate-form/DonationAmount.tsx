@@ -5,7 +5,8 @@ import Button from "../button";
 import { useDonation } from ".";
 import { useTiers } from "@/contexts/tiers";
 import DonationChips from "./DonationChips";
-import { getCurrencyString, isValidInteger } from "@/utils";
+import { getCurrencyString, getCurrencySymbol, isValidInteger } from "@/utils";
+import DonationDropdown from './DonationDropdown';
 
 const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
@@ -14,7 +15,7 @@ export default function DonationAmount() {
 
     const [message, setMessage] = useState('');
 
-    const { amount } = info;
+    const { amount, currency } = info;
     
     const onAmountChange = (value: string) => {
         setMessage('');
@@ -41,11 +42,7 @@ export default function DonationAmount() {
     return(
         <form onSubmit={onNext}>
             <div className="flex">
-                <div className="px-5 flex items-center bg-secondary border-[1px] border-secondary rounded-l-md text-secondary">
-                    <span>
-                        $
-                    </span>
-                </div>
+                <DonationDropdown />
                 <Input 
                     className="rounded-md rounded-l-none border-l-0"
                     placeholder="Amount"
@@ -72,7 +69,7 @@ export default function DonationAmount() {
                 onClick={() => {}}
                 className="mt-4 w-full"
             >
-                Donate {isValidInteger(amount) && getCurrencyString(amount)}
+                Donate {isValidInteger(amount) && getCurrencyString(amount, info.currency)}
                 {info.billingPeriod === 'month' && ' monthly'}
             </Button>
         </form>

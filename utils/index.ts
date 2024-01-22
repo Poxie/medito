@@ -33,15 +33,22 @@ export const getRelativeTimeString = (timestamp: number) => {
     }
 }
 
-export const getCurrencyString = (amount: string | number) => {
+export const getCurrencyString = (amount: string | number, currency='usd') => {
     const numberAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
     
-    let currencyString = numberAmount.toLocaleString('en', { currency: 'USD', style: 'currency' });
+    let currencyString = numberAmount.toLocaleString('en', { currency, style: 'currency' });
     if(currencyString.endsWith('.00')) {
         currencyString = currencyString.slice(0, -3);
     }
 
     return currencyString;
+}
+export const getCurrencySymbol = (currency: string, locale='default') => {
+    try {
+        return (0).toLocaleString(locale, { style: 'currency', currency, minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace(/\d/g, '').trim()
+    } catch {
+        return currency;
+    }
 }
 
 export const isValidInteger = (value: string) => {
