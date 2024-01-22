@@ -1,3 +1,4 @@
+import { isValidCurrency } from '@/utils';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -11,7 +12,7 @@ export async function POST(request: Request) {
         return new Response('Invalid body.', { status: 400 });
     }
 
-    const { amount, interval } = body;
+    const { amount, interval, currency='usd' } = body;
     if(!amount) {
         return new Response('Invalid amount', { status: 400 });
     }
@@ -20,6 +21,9 @@ export async function POST(request: Request) {
     }
     if(Number(amount) > MAX_AMOUNT) {
         return new Response('Amount must be 10000 or less.', { status: 400 });
+    }
+    if(!isValidCurrency(currency)) {
+        return new Response('Invalid currency', { status: 400 });
     }
 
     try {
@@ -34,9 +38,9 @@ export async function POST(request: Request) {
         }
 
         const price = await stripe.prices.create({
-            currency: 'usd',
             product: process.env.STRIPE_PRODUCT_ID,
-            ...amountData
+            currency,
+            ...amountData,
         })
     
         const mode = interval ? 'subscription' : 'payment';

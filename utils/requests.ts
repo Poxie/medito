@@ -37,10 +37,10 @@ export const APIRequest = {
     },
 
     // Function to get a stripe checkout link based on amount.
-    getStripeLink: async (amount: string | number, interval?: 'month') => {
+    getStripeLink: async (amount: string | number, currency: string, interval?: 'month') => {
         const res = await fetch('/payments', {
             method: 'POST',
-            body: JSON.stringify({ amount, interval }),
+            body: JSON.stringify({ amount, currency, interval }),
             headers: {
                 'Content-Type': 'application/json',
             }

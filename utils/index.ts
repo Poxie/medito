@@ -1,3 +1,5 @@
+import currencies from '@/assets/data/currencies/index.json';
+
 const SECTION_OFFSET = -40;
 const MOBILE_SECTION_OFFSET = SECTION_OFFSET - 166;
 const MOBILE_THRESHOLD = 1024;
@@ -58,4 +60,7 @@ export const isValidInteger = (value: string) => {
 export const isValidEmail = (value: string) => {
     const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     return isEmail;
+}
+export const isValidCurrency = (value: string) => {
+    return currencies.includes(value.toUpperCase());
 }

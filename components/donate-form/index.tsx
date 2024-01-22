@@ -64,7 +64,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
     const goToStripe = async () => {
         if(!info.amount) return;
 
-        const url = await APIRequest.getStripeLink(info.amount, info.billingPeriod);
+        const url = await APIRequest.getStripeLink(info.amount, info.currency, info.billingPeriod);
         
         window.location.href = url;
     }
