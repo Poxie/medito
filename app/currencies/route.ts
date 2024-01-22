@@ -14,3 +14,5 @@ export async function GET(request: Request) {
 
     return Response.json(rates);
 }
+
+export const runtime = 'edge';
