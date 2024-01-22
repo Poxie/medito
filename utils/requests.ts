@@ -53,6 +53,14 @@ export const APIRequest = {
         return url;
     },
 
+    // Function to get currency exchange rates.
+    getCurrencyRates: async () => {
+        const res = await fetch('/currencies');
+        if(!res.ok) throw new Error('Failed to get currency rates');
+
+        return await res.json();
+    },
+
     // Mock function to send a message.
     // Should return a Response object.
     sendMessage: async ({ name, email, message }: MessageProps) => {
@@ -62,5 +70,5 @@ export const APIRequest = {
             }, 1000);
         });
         return res as Response;
-    }    
+    }
 }
