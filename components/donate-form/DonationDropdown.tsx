@@ -28,6 +28,7 @@ export default function DonationDropdown() {
             className="bg-secondary border-[1px] border-secondary rounded-l-md"
             selectedClassName="px-5 h-full flex items-center text-secondary"
             renderSelectedItem={renderItem}
+            emptyLabel='No currencies found'
         />
     )
 }
