@@ -9,7 +9,7 @@ export type DropdownItem = {
     id: string;
     text: string;
 }
-export default function Dropdown({ items, selectedId, onSelect, className, selectedClassName, renderSelectedItem, emptyLabel='No items found' }: {
+export default function Dropdown({ items, selectedId, onSelect, className, selectedClassName, renderSelectedItem, selectAriaLabel, emptyLabel='No items found' }: {
     items: DropdownItem[];
     selectedId: string;
     onSelect: (id: string) => void;
@@ -17,6 +17,7 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
     selectedClassName?: string;
     emptyLabel?: string;
     renderSelectedItem?: (selectedItem: DropdownItem) => React.ReactNode;
+    selectAriaLabel?: string;
 }) {
     const [position, setPosition] = useState<'bottom' | 'top'>('bottom');
     const [open, setOpen] = useState(false);
@@ -68,6 +69,7 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
                     "hover:bg-tertiary transition-colors",
                     selectedClassName,
                 )}
+                aria-label={selectAriaLabel}
             >
                 {!selectedItem && (
                     <span>

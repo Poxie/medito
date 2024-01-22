@@ -29,6 +29,7 @@ export default function DonationDropdown() {
             selectedClassName="px-5 h-full flex items-center text-secondary"
             renderSelectedItem={renderItem}
             emptyLabel='No currencies found'
+            selectAriaLabel='Select currency'
         />
     )
 }
