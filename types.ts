@@ -5,6 +5,7 @@ export type DonationProgress = {
 export type Donator = {
     name: string;
     amount: number;
+    currency: string;
     timestamp: number;
 }
 export type MessageProps = {

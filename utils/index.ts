@@ -35,10 +35,11 @@ export const getRelativeTimeString = (timestamp: number) => {
     }
 }
 
-export const getCurrencyString = (amount: string | number, currency='usd') => {
+export const getCurrencyString = (amount: string | number, rate: number, currency: string) => {
     const numberAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+    const convertedAmount = Math.ceil(numberAmount * rate);
     
-    let currencyString = numberAmount.toLocaleString('en', { currency, style: 'currency' });
+    let currencyString = convertedAmount.toLocaleString('en', { currency, style: 'currency' });
     if(currencyString.endsWith('.00')) {
         currencyString = currencyString.slice(0, -3);
     }

@@ -47,7 +47,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
     onStepChange?: (step: number) => void;
 }) {
     const { activeTier } = useTiers();
-    const { currency } = useCurrency();
+    const { currency, rate } = useCurrency();
 
     const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
     const [info, setInfo] = useState(createInitialInfo(defaultAmount));
@@ -57,9 +57,9 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
 
         setInfo(prev => ({
             ...prev,
-            amount: activeTier.amount,
+            amount: Math.ceil(Number(activeTier.amount) * rate).toString(),
         }));
-    }, [activeTier]);
+    }, [activeTier, currency, rate]);
 
     const goToStripe = async (onError: (message: string) => void) => {
         if(!info.amount) return;

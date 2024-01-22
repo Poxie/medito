@@ -8,6 +8,7 @@ export async function GET(request: Request, { params }: { params: { sessionId: s
         return Response.json({
             name: session.customer_details?.name,
             amount: (session.amount_total || 0) / 100,
+            currency: session.currency,
             timestamp: session.created * 1000,
         });
     } catch(error: any) {

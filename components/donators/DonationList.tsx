@@ -31,7 +31,6 @@ export default function DonationList({ initialDonators, className }: {
         router.replace('/');
     }, [sessionId]);
 
-    // Setup webhook to listen for new donations
     useEffect(() => {
         const interval = setInterval(async () => {
             const res = await fetch('https://randomuser.me/api?nat=us');
@@ -41,6 +40,7 @@ export default function DonationList({ initialDonators, className }: {
             const newDonator: Donator = {
                 name: user.name.first,
                 amount: Math.floor(Math.random() * 100),
+                currency: 'usd',
                 timestamp: Date.now(),
             }
             
@@ -69,7 +69,7 @@ export default function DonationList({ initialDonators, className }: {
                             <span className="text-secondary">
                                 donated
                                 {' '}
-                                {getCurrencyString(donator.amount)}
+                                {getCurrencyString(donator.amount, 1, donator.currency)}
                             </span>
                         </span>
                         <span className="text-secondary text-sm">

@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CurrencyContext = createContext<null | {
     currency: string;
     setCurrency: (currency: string) => void;
+    rate: number;
 }>(null);
 
 export const useCurrency = () => {
@@ -28,7 +29,7 @@ export default function CurrencyProvider({ children }: {
     const value = {
         currency,
         setCurrency,
-        rate: rates?.[currency.toLowerCase()] || 1,
+        rate: rates?.[currency] || 1,
     }
     return(
         <CurrencyContext.Provider value={value}>

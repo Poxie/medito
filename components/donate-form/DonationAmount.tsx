@@ -11,7 +11,7 @@ import { useCurrency } from "@/contexts/currency";
 
 const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
-    const { currency } = useCurrency();
+    const { currency, rate } = useCurrency();
     const { setActiveTierId, } = useTiers();
     const { setStep, updateInfo, info, goToStripe } = useDonation();
 
@@ -70,7 +70,7 @@ export default function DonationAmount() {
                 onClick={() => {}}
                 className="mt-4 w-full"
             >
-                Donate {isValidInteger(amount) && getCurrencyString(amount, currency)}
+                Donate {isValidInteger(amount) && getCurrencyString(amount, 1, currency)}
                 {info.billingPeriod === 'month' && ' monthly'}
             </Button>
         </form>

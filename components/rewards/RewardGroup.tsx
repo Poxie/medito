@@ -5,12 +5,14 @@ import { RewardGroup } from "@/assets/data/tiers/types";
 import { useTiers } from "@/contexts/tiers";
 import { twMerge } from "tailwind-merge";
 import { getCurrencyString } from "@/utils";
+import { useCurrency } from "@/contexts/currency";
 
 export default function RewardTier({ id, amount, title, rewards, index }: RewardGroup & {
     index: number;
 }) {
-    const { activeTier, setActiveTierId } = useTiers();
     const { setModal } = useModal();
+    const { currency, rate } = useCurrency();
+    const { activeTier, setActiveTierId } = useTiers();
 
     const isActive = activeTier?.id === id;
 
@@ -29,7 +31,7 @@ export default function RewardTier({ id, amount, title, rewards, index }: Reward
             <div className="p-4 flex justify-between items-start gap-1 border-b-[1px] border-b-secondary">
                 <div className="flex items-center flex-wrap">
                     <span className="block text-lg font-medium mr-2">
-                        {getCurrencyString(amount)} • {title}
+                        {getCurrencyString(amount, rate, currency)} • {title}
                     </span>
                     {index !== 0 && (
                         <span className="text-secondary text-sm">

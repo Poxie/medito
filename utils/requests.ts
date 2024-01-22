@@ -19,10 +19,10 @@ export const APIRequest = {
     // Should return an array of type Donator.
     getDonators: async () => {
         const DONATORS = [
-            { name: 'Poxen', amount: 100, timestamp: Date.now() - 500000 },
-            { name: 'Nick', amount: 5, timestamp: Date.now() - 750000 },
-            { name: 'Ashley', amount: 12, timestamp: Date.now() - 1700000 },
-            { name: 'Emily', amount: 1, timestamp: Date.now() - 500000000 },
+            { name: 'Poxen', amount: 100, currency: 'sek', timestamp: Date.now() - 500000 },
+            { name: 'Nick', amount: 5, currency: 'usd', timestamp: Date.now() - 750000 },
+            { name: 'Ashley', amount: 12, currency: 'usd', timestamp: Date.now() - 1700000 },
+            { name: 'Emily', amount: 1, currency: 'usd', timestamp: Date.now() - 500000000 },
         ]
         const donators: Donator[] = await new Promise(res => res(DONATORS));
         return donators;
