@@ -91,7 +91,7 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
                         animate={{ opacity: 1, translateY: 0, scale: 1 }}
                         transition={{ bounce: false, duration: .2 }}
                         className={twMerge(
-                            "[--width:180px] [--spacing:.5rem] min-w-[--width] z-30 absolute left-0 bg-secondary border-[1px] border-secondary rounded-md box-shadow-lg overflow-auto",
+                            "[--width:200px] [--spacing:.5rem] min-w-[--width] z-30 absolute left-0 bg-secondary border-[1px] border-secondary rounded-md box-shadow-lg overflow-auto",
                             position === 'bottom' && "top-[calc(100%+var(--spacing))]",
                             position === 'top' && "bottom-[calc(100%+var(--spacing))]",
                         )}
