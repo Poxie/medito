@@ -7,15 +7,17 @@ import { useTiers } from "@/contexts/tiers";
 import DonationChips from "./DonationChips";
 import { getCurrencyString, getCurrencySymbol, isValidInteger } from "@/utils";
 import DonationDropdown from './DonationDropdown';
+import { useCurrency } from "@/contexts/currency";
 
 const MAX_AMOUNT = 10000;
 export default function DonationAmount() {
+    const { currency } = useCurrency();
     const { setActiveTierId, } = useTiers();
     const { setStep, updateInfo, info, goToStripe } = useDonation();
 
     const [message, setMessage] = useState('');
 
-    const { amount, currency } = info;
+    const { amount } = info;
     
     const onAmountChange = (value: string) => {
         setMessage('');
@@ -68,7 +70,7 @@ export default function DonationAmount() {
                 onClick={() => {}}
                 className="mt-4 w-full"
             >
-                Donate {isValidInteger(amount) && getCurrencyString(amount, info.currency)}
+                Donate {isValidInteger(amount) && getCurrencyString(amount, currency)}
                 {info.billingPeriod === 'month' && ' monthly'}
             </Button>
         </form>

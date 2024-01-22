@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import DonationAmount from "./DonationAmount";
 import { useTiers } from "@/contexts/tiers";
 import { APIRequest } from "@/utils/requests";
+import { useCurrency } from "@/contexts/currency";
 
 export const DONATE_FORM_STEPS = {
     AMOUNT: 0,
@@ -11,7 +12,6 @@ export const DONATE_FORM_STEPS = {
 
 type Info = {
     amount: string;
-    currency: string;
     displayName: string;
     email: string;
     billingPeriod: 'month' | undefined;
@@ -20,7 +20,6 @@ type InfoKey = keyof Info;
 
 const createInitialInfo: (amount?: string) => Info = (amount='') => ({
     amount,
-    currency: 'usd',
     displayName: '',
     email: '',
     billingPeriod: undefined,
@@ -48,6 +47,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
     onStepChange?: (step: number) => void;
 }) {
     const { activeTier } = useTiers();
+    const { currency } = useCurrency();
 
     const [step, setStep] = useState(DONATE_FORM_STEPS.AMOUNT);
     const [info, setInfo] = useState(createInitialInfo(defaultAmount));
@@ -65,7 +65,7 @@ export default function DonateForm({ defaultAmount, onStepChange }: {
         if(!info.amount) return;
 
         try {
-            const url = await APIRequest.getStripeLink(info.amount, info.currency, info.billingPeriod);
+            const url = await APIRequest.getStripeLink(info.amount, currency, info.billingPeriod);
             window.location.href = url;
         } catch(error: any) {
             onError(error.message)

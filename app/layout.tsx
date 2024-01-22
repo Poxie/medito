@@ -6,6 +6,7 @@ import ModalProvider from '@/contexts/modal'
 import Footer from '@/components/footer'
 import TiersProvider from '@/contexts/tiers'
 import metaData from '@/assets/data/metadata/index.json';
+import CurrencyProvider from '@/contexts/currency'
 
 const DMSans = DM_Sans({ subsets: ['latin'] })
 
@@ -19,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={DMSans.className}>
-        <TiersProvider>
-          <ModalProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </ModalProvider>
-        </TiersProvider>
+        <CurrencyProvider>
+          <TiersProvider>
+            <ModalProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </ModalProvider>
+          </TiersProvider>
+        </CurrencyProvider>
       </body>
     </html>
   )

@@ -2,6 +2,7 @@ import currencies from '@/assets/data/currencies/index.json';
 import { useDonation } from '.';
 import Dropdown, { DropdownItem } from '../dropdown';
 import { getCurrencySymbol } from '@/utils';
+import { useCurrency } from '@/contexts/currency';
 
 const currencyItems = currencies.map(currency => ({
     id: currency,
@@ -9,7 +10,7 @@ const currencyItems = currencies.map(currency => ({
 }))
 
 export default function DonationDropdown() {
-    const { info: { currency }, updateInfo } = useDonation();
+    const { currency, setCurrency } = useCurrency();
 
     const renderItem = (selectedItem: DropdownItem) => {
         return(
@@ -23,7 +24,7 @@ export default function DonationDropdown() {
         <Dropdown 
             items={currencyItems}
             selectedId={currency}
-            onSelect={currency => updateInfo('currency', currency)}
+            onSelect={setCurrency}
             className="bg-secondary border-[1px] border-secondary rounded-l-md"
             selectedClassName="px-5 h-full flex items-center text-secondary"
             renderSelectedItem={renderItem}
