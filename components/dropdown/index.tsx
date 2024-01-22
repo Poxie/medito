@@ -30,7 +30,7 @@ export default function Dropdown({ items, selectedId, onSelect, className, selec
 
         document.addEventListener('click', handleClickOutside);
         return () => document.removeEventListener('click', handleClickOutside);
-    })
+    }, []);
 
     const handleClick = (id: string) => {
         onSelect(id);
