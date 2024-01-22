@@ -21,7 +21,7 @@ export default function SuccessModal({ sessionId }: {
             .then(data => {
                 setStatus({
                     status: 'success',
-                    statusText: `Thank you for your ${getCurrencyString(data.amount)} donation, ${data.name}!`,
+                    statusText: `Thank you for your ${getCurrencyString(data.amount, 1, data.currency)} donation, ${data.name}!`,
                 });
             })
             .catch(error => {
